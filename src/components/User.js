@@ -9,7 +9,7 @@ export default function User({ user }) {
       <Image src={user.avatar} roundedCircle width={64} height={64} />
       <div>
         <p>
-          <Link to={`/user/${user.name}`}>{user.name}</Link>
+          <Link to={`/user/${user.id}`}>{user.name}</Link>
           &nbsp;&mdash;&nbsp;
           <TimeAgo isoDate={user.lastActive} />
         </p>
