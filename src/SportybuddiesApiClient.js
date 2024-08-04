@@ -38,10 +38,15 @@ export default class SportybuddiesApiClient {
     response.headers.forEach((value, key) => {
       headers[key] = value;
     });
+    let responseBody = null;
+    if (response.status !== 204) {
+      const text = await response.text();
+      responseBody = text ? JSON.parse(text) : null;
+    }
     return {
       ok: response.ok,
       status: response.status,
-      body: response.status !== 204 ? await response.json() : null,
+      body: responseBody,
       headers: headers,
     };
   }
