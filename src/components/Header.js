@@ -6,9 +6,11 @@ import Image from 'react-bootstrap/Image';
 import Spinner from 'react-bootstrap/Spinner';
 import { NavLink } from 'react-router-dom';
 import { useUser } from '../contexts/UserProvider';
+import { getGravatarUrl } from '../utils/gravatar';
 
 export default function Header() {
   const { user, logout } = useUser();
+  const gravatarUrl = user ? getGravatarUrl(user.email,32) : undefined;
 
   return (
     <Navbar bg="light" sticky="top" className="Header">
@@ -22,7 +24,7 @@ export default function Header() {
               {user !== null &&
                 <div className="justify-content-end">
                   <NavDropdown title={
-                    <Image src={user.avatar_url + '&s=32'} roundedCircle />
+                    <Image src={gravatarUrl} roundedCircle />
                   } align="end">
                     <NavDropdown.Item as={NavLink} to={'/user/' + user.id}>
                       Profile
