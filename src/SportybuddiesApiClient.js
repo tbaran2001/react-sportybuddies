@@ -6,6 +6,22 @@ export default class SportybuddiesApiClient {
   }
 
   async request(options) {
+    let response = await this.requestInternal(options);
+    if (response.status === 401 && options.url !== '/refresh') {
+      const refreshResponse = await this.post('/refresh', {
+        refreshToken: localStorage.getItem('refreshToken'),
+      });
+      if (refreshResponse.ok) {
+        localStorage.setItem('accessToken', refreshResponse.body.access_token);
+        localStorage.setItem('refreshToken', refreshResponse.body.refreshToken);
+        response = await this.requestInternal(options);
+      }
+    }
+    return response;
+  }
+
+
+  async requestInternal(options) {
     let query = new URLSearchParams(options.query || {}).toString();
     if (query !== "") {
       query = "?" + query;
@@ -17,6 +33,8 @@ export default class SportybuddiesApiClient {
         method: options.method,
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+          credentials: options.url === '/refresh' ? 'include' : 'omit',
           ...options.headers,
         },
         body: options.body ? JSON.stringify(options.body) : null,
@@ -49,6 +67,28 @@ export default class SportybuddiesApiClient {
       body: responseBody,
       headers: headers,
     };
+  }
+
+  async login(username, password) {
+    const response = await this.post("/login", {
+      email: username,
+      password: password,
+    });
+    if (!response.ok) {
+      return response.status === 401 ? "fail" : "error";
+    }
+    localStorage.setItem("accessToken", response.body.accessToken);
+    localStorage.setItem("refreshToken", response.body.refreshToken);
+    return "ok";
+  }
+
+  async logout() {
+    await this.delete("/tokens");
+    localStorage.removeItem("accessToken");
+  }
+
+  isAuthenticated() {
+    return localStorage.getItem("accessToken") !== null;
   }
 
   async get(url, query, options) {
