@@ -9,7 +9,7 @@ export default function Sidebar() {
         <Nav.Link as={NavLink} to="/" end>All users</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link as={NavLink} to="/user/1">User</Nav.Link>
+        <Nav.Link as={NavLink} to="/profile">Profile</Nav.Link>
       </Nav.Item>
     </Navbar>
   );

@@ -10,6 +10,7 @@ import FlashProvider from "./contexts/FlashProvider";
 import UserProvider from "./contexts/UserProvider";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
+import ProfilePage from "./pages/ProfilePage";
 
 export default function App() {
   return (
@@ -43,6 +44,7 @@ export default function App() {
                       <Routes>
                         <Route path="/" element={<AllUsersPage />} />
                         <Route path="/user/:id" element={<UserPage />} />
+                        <Route path="/profile" element={<ProfilePage />} />
                         <Route path="*" element={<Navigate to="/" />} />
                       </Routes>
                     </PrivateRoute>
