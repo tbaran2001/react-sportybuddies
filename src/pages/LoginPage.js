@@ -10,7 +10,7 @@ import { Link,useNavigate, useLocation } from "react-router-dom";
 
 export default function LoginPage() {
   const [formErrors, setFormErrors] = useState({});
-  const usernameField = useRef();
+  const emailField = useRef();
   const passwordField = useRef();
   const { login } = useUser();
   const flash = useFlash();
@@ -18,17 +18,17 @@ export default function LoginPage() {
   const location = useLocation();
 
   useEffect(() => {
-    usernameField.current.focus();
+    emailField.current.focus();
   }, []);
 
   const onSubmit = async (ev) => {
     ev.preventDefault();
-    const username = usernameField.current.value;
+    const email = emailField.current.value;
     const password = passwordField.current.value;
 
     const errors = {};
-    if (!username) {
-      errors.username = "Username must not be empty.";
+    if (!email) {
+      errors.email = "Email must not be empty.";
     }
     if (!password) {
       errors.password = "Password must not be empty.";
@@ -38,9 +38,9 @@ export default function LoginPage() {
       return;
     }
 
-    const result = await login(username, password);
+    const result = await login(email, password);
     if (result === 'fail') {
-      flash('Invalid username or password', 'danger');
+      flash('Invalid email or password', 'danger');
     }
     else if (result === 'ok') {
       let next = '/';
@@ -56,10 +56,10 @@ export default function LoginPage() {
       <h1>Login</h1>
       <Form onSubmit={onSubmit}>
         <InputField
-          name="username"
-          label="Username or email address"
-          error={formErrors.username}
-          fieldRef={usernameField}
+          name="email"
+          label="Email address"
+          error={formErrors.email}
+          fieldRef={emailField}
         />
         <InputField
           name="password"

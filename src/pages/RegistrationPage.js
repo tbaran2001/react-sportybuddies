@@ -3,20 +3,19 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Body from "../components/Body";
 import InputField from "../components/InputField";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useApi } from "../contexts/ApiProvider";
 import { useFlash } from "../contexts/FlashProvider";
 
 export default function RegistrationPage() {
   const [formErrors, setFormErrors] = useState({});
-  const usernameField = useRef();
   const emailField = useRef();
   const passwordField = useRef();
   const password2Field = useRef();
   const flash = useFlash();
 
   useEffect(() => {
-    usernameField.current.focus();
+    emailField.current.focus();
   }, []);
 
   const navigate = useNavigate();
@@ -48,12 +47,6 @@ export default function RegistrationPage() {
       <h1>Register</h1>
       <Form onSubmit={onSubmit}>
         <InputField
-          name="username"
-          label="Username"
-          error={formErrors.username}
-          fieldRef={usernameField}
-        />
-        <InputField
           name="email"
           label="Email address"
           error={formErrors.email}
@@ -77,6 +70,8 @@ export default function RegistrationPage() {
           Register
         </Button>
       </Form>
+      <hr />
+      <p>Already have an account? <Link to="/login">Login here</Link>!</p>
     </Body>
   );
 }

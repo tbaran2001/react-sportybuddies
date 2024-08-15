@@ -19,8 +19,8 @@ export default function UserProvider({ children }) {
     })();
   }, [api]);
 
-  const login = async (username, password) => {
-    const result = await api.login(username, password);
+  const login = async (email, password) => {
+    const result = await api.login(email, password);
     if (result === 'ok') {
       const response = await api.get('/auth/me');
       setUser(response.ok ? response.body : null);
