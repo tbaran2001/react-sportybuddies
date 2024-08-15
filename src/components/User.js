@@ -16,7 +16,17 @@ export default function User({ user }) {
           <TimeAgo isoDate={user.lastActive} />
         </p>
         <p>{user.description}</p>
+        {user.sports && (
+        <div>
+          <ul>
+            {user.sports.map((sport) => (
+              <li key={sport.id}>{sport.name}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       </div>
+      
     </Stack>
   );
 }
