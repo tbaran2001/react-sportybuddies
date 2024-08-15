@@ -17,7 +17,7 @@ export default function ProfilePage() {
         <Card style={{ width: "18rem" }}>
           <Card.Img variant="top" src={gravatarUrl} />
           <Card.Body>
-            <Card.Title>{user.name}</Card.Title>
+            <Card.Title>{user.userName}</Card.Title>
             <Card.Text>
               {user.description}
             </Card.Text>

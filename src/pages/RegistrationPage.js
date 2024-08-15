@@ -6,13 +6,16 @@ import InputField from "../components/InputField";
 import { Link, useNavigate } from "react-router-dom";
 import { useApi } from "../contexts/ApiProvider";
 import { useFlash } from "../contexts/FlashProvider";
+import { useUser } from "../contexts/UserProvider";
 
 export default function RegistrationPage() {
   const [formErrors, setFormErrors] = useState({});
+  const usernameField = useRef();
   const emailField = useRef();
   const passwordField = useRef();
   const password2Field = useRef();
   const flash = useFlash();
+  const { login } = useUser();
 
   useEffect(() => {
     emailField.current.focus();
@@ -22,22 +25,56 @@ export default function RegistrationPage() {
   const api = useApi();
 
   const onSubmit = async (event) => {
+    const email = emailField.current.value;
+    const password = passwordField.current.value;
     event.preventDefault();
-    if (passwordField.current.value !== password2Field.current.value) {
-      setFormErrors({password2: "Passwords don't match"});
+    const errors = {};
+
+    if (!usernameField.current.value) {
+      errors.username = "Username is required";
     }
-    else {
-      const data = await api.post('/register', {
-        email: emailField.current.value,
-        password: passwordField.current.value
+    if (!emailField.current.value) {
+      errors.email = "Email is required";
+    }
+    if (!passwordField.current.value) {
+      errors.password = "Password is required";
+    }
+    if (!password2Field.current.value) {
+      errors.password2 = "Password confirmation is required";
+    }
+    if (passwordField.current.value !== password2Field.current.value) {
+      errors.password2 = "Passwords don't match";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+    } else {
+      const data = await api.post("/register", {
+        email: email,
+        password: password,
       });
       if (!data.ok) {
         setFormErrors(data.body.errors.json);
-      }
-      else {
+      } else {
         setFormErrors({});
-        flash('You have successfully registered!', 'success');
-        navigate('/login');
+        flash("You have successfully registered!", "success");
+
+        // Log in the user
+        await login(email, password);
+
+        //send patch request to update username
+        const response = await api.patch("/auth/me", [
+          {
+            op: "replace",
+            path: "/UserName",
+            value: usernameField.current.value,
+          },
+        ]);
+        if (!response.ok) {
+          flash("Failed to update username", "danger");
+        }
+        await login(email, password);
+        navigate("/profile");
       }
     }
   };
@@ -46,6 +83,12 @@ export default function RegistrationPage() {
     <Body>
       <h1>Register</h1>
       <Form onSubmit={onSubmit}>
+        <InputField
+          name="username"
+          label="Username"
+          error={formErrors.username}
+          fieldRef={usernameField}
+        />
         <InputField
           name="email"
           label="Email address"
@@ -71,7 +114,9 @@ export default function RegistrationPage() {
         </Button>
       </Form>
       <hr />
-      <p>Already have an account? <Link to="/login">Login here</Link>!</p>
+      <p>
+        Already have an account? <Link to="/login">Login here</Link>!
+      </p>
     </Body>
   );
 }

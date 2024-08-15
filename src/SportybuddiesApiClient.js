@@ -83,8 +83,8 @@ export default class SportybuddiesApiClient {
   }
 
   async logout() {
-    await this.delete("/tokens");
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
   }
 
   isAuthenticated() {
@@ -105,5 +105,9 @@ export default class SportybuddiesApiClient {
 
   async delete(url, options) {
     return this.request({ method: "DELETE", url, ...options });
+  }
+
+  async patch(url, body, options) {
+    return this.request({ method: "PATCH", url, body, ...options });
   }
 }
