@@ -10,8 +10,8 @@ import { useApi } from "../contexts/ApiProvider";
 export default function ProfilePage() {
   const { user } = useUser();
   const gravatarUrl = user ? getGravatarUrl(user.email, 512) : undefined;
-  const [sports, setSports] = useState([]);
   const api = useApi();
+  const [sports, setSports] = useState([]);
   const [userSports, setUserSports] = useState(user.sports);
 
   const addSport = async (sport) => {
