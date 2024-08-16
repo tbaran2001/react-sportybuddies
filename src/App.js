@@ -11,6 +11,7 @@ import UserProvider from "./contexts/UserProvider";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import ProfilePage from "./pages/ProfilePage";
+import MatchingPage from "./pages/MatchingPage";
 
 export default function App() {
   return (
@@ -45,6 +46,7 @@ export default function App() {
                         <Route path="/" element={<AllUsersPage />} />
                         <Route path="/user/:id" element={<UserPage />} />
                         <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/matching" element={<MatchingPage />} />
                         <Route path="*" element={<Navigate to="/" />} />
                       </Routes>
                     </PrivateRoute>

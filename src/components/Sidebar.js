@@ -11,6 +11,9 @@ export default function Sidebar() {
       <Nav.Item>
         <Nav.Link as={NavLink} to="/profile">Profile</Nav.Link>
       </Nav.Item>
+      <Nav.Item>
+        <Nav.Link as={NavLink} to="/matching">Matching</Nav.Link>
+      </Nav.Item>
     </Navbar>
   );
 }

@@ -15,14 +15,14 @@ export default function ProfilePage() {
   const [userSports, setUserSports] = useState(user.sports);
 
   const addSport = async (sport) => {
-    const response = await api.post(`/usersports/${user.id}/${sport.id}`);
+    const response = await api.post("/currentuser/sports/"+sport.id);
     if (response.ok) {
       setUserSports([...userSports, sport]);
     }
   };
 
   const removeSport = async (sport) => {
-    const response = await api.delete(`/usersports/${user.id}/${sport.id}`);
+    const response = await api.delete("/currentuser/sports/"+sport.id);
     if (response.ok) {
       setUserSports(userSports.filter((userSport) => userSport.id !== sport.id));
     }
@@ -38,6 +38,15 @@ export default function ProfilePage() {
       }
     })();
   }, [api]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await api.get("/currentuser/sports");
+      if (response.ok) {
+        setUserSports(response.body);
+      }
+    })();
+  }, [api, user.id]);
 
   return (
     <Body sidebar>

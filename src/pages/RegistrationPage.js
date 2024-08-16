@@ -63,7 +63,7 @@ export default function RegistrationPage() {
         await login(email, password);
 
         //send patch request to update username
-        const response = await api.patch("/auth/me", [
+        const response = await api.patch("/currentuser", [
           {
             op: "replace",
             path: "/UserName",

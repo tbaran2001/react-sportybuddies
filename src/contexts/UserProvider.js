@@ -10,7 +10,7 @@ export default function UserProvider({ children }) {
   useEffect(() => {
     (async () => {
       if (api.isAuthenticated()) {
-        const response = await api.get('/auth/me');
+        const response = await api.get('/currentuser');
         setUser(response.ok ? response.body : null);
       }
       else {
@@ -22,7 +22,7 @@ export default function UserProvider({ children }) {
   const login = async (email, password) => {
     const result = await api.login(email, password);
     if (result === 'ok') {
-      const response = await api.get('/auth/me');
+      const response = await api.get('/currentuser');
       setUser(response.ok ? response.body : null);
     }
     return result;
