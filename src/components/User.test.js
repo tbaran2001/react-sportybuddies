@@ -2,7 +2,6 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import User from "./User";
 import { BrowserRouter } from "react-router-dom";
-import { act } from "react";
 
 test("renders user", () => {
   const user = {
