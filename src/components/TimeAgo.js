@@ -8,7 +8,7 @@ const secondsTable = [
   ["hour", 60 * 60],
   ["minute", 60],
 ];
-const rtf = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" });
+const rtf = new Intl.RelativeTimeFormat('en', { numeric: "auto" });
 
 function getTimeAgo(date) {
   const seconds = Math.round((date.getTime() - new Date().getTime()) / 1000);
