@@ -1,25 +1,17 @@
+import { Cookies, useCookies } from "react-cookie";
+
 const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
 
 export default class SportybuddiesApiClient {
   constructor() {
     this.base_url = BASE_API_URL + "/api";
+    this.cookies = new Cookies();
   }
 
   async request(options) {
     let response = await this.requestInternal(options);
-    if (response.status === 401 && options.url !== '/refresh') {
-      const refreshResponse = await this.post('/refresh', {
-        refreshToken: localStorage.getItem('refreshToken'),
-      });
-      if (refreshResponse.ok) {
-        localStorage.setItem('accessToken', refreshResponse.body.access_token);
-        localStorage.setItem('refreshToken', refreshResponse.body.refreshToken);
-        response = await this.requestInternal(options);
-      }
-    }
     return response;
   }
-
 
   async requestInternal(options) {
     let query = new URLSearchParams(options.query || {}).toString();
@@ -33,11 +25,10 @@ export default class SportybuddiesApiClient {
         method: options.method,
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("accessToken"),
-          credentials: options.url === '/refresh' ? 'include' : 'omit',
           ...options.headers,
         },
         body: options.body ? JSON.stringify(options.body) : null,
+        credentials: "include",
       });
     } catch (error) {
       response = {
@@ -69,26 +60,22 @@ export default class SportybuddiesApiClient {
     };
   }
 
-  async login(username, password) {
-    const response = await this.post("/login", {
-      email: username,
-      password: password,
-    });
-    if (!response.ok) {
-      return response.status === 401 ? "fail" : "error";
-    }
-    localStorage.setItem("accessToken", response.body.accessToken);
-    localStorage.setItem("refreshToken", response.body.refreshToken);
-    return "ok";
+  async login(email, password) {
+    const response = await this.post(
+      "/login",
+      { email, password },
+      { query: { useCookies: "true" } }
+    );
+    return response;
   }
 
   async logout() {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
+    const response = await this.post("/logout");
+    return response;
   }
 
   isAuthenticated() {
-    return localStorage.getItem("accessToken") !== null;
+    return this.cookies.get(".AspNetCore.Identity.Application") !== undefined;
   }
 
   async get(url, query, options) {

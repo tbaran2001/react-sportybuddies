@@ -1,5 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import { useApi } from './ApiProvider';
+import { createContext, useContext, useState, useEffect } from "react";
+import { useApi } from "./ApiProvider";
 
 const UserContext = createContext();
 
@@ -10,10 +10,9 @@ export default function UserProvider({ children }) {
   useEffect(() => {
     (async () => {
       if (api.isAuthenticated()) {
-        const response = await api.get('/currentuser');
+        const response = await api.get("/currentuser");
         setUser(response.ok ? response.body : null);
-      }
-      else {
+      } else {
         setUser(null);
       }
     })();
@@ -21,8 +20,8 @@ export default function UserProvider({ children }) {
 
   const login = async (email, password) => {
     const result = await api.login(email, password);
-    if (result === 'ok') {
-      const response = await api.get('/currentuser');
+    if (result.ok === true) {
+      const response = await api.get("/currentuser");
       setUser(response.ok ? response.body : null);
     }
     return result;
