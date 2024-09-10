@@ -44,13 +44,17 @@ export default class SportybuddiesApiClient {
       };
     }
     const headers = {};
-    response.headers.forEach((value, key) => {
+    response.headers?.forEach((value, key) => {
       headers[key] = value;
     });
     let responseBody = null;
     if (response.status !== 204) {
-      const text = await response.text();
-      responseBody = text ? JSON.parse(text) : null;
+      try {
+        const text = await response.text();
+        responseBody = text ? JSON.parse(text) : null;
+      } catch (jsonError) {
+        console.error("Failed to parse JSON response:", jsonError);
+      }
     }
     return {
       ok: response.ok,
