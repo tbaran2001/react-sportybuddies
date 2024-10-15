@@ -1,4 +1,4 @@
-import { Cookies, useCookies } from "react-cookie";
+import { Cookies} from "react-cookie";
 
 const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
 
