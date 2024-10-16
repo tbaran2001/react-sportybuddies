@@ -4,6 +4,7 @@ import User from "../components/User";
 import { useApi } from "../contexts/ApiProvider";
 import More from "../components/More";
 import Body from "../components/Body";
+import { Link } from "react-router-dom";
 
 export default function BuddiesPage() {
   const [buddies, setBuddies] = useState();
@@ -51,6 +52,7 @@ export default function BuddiesPage() {
               ) : (
                 buddies.map((buddy) => (
                   <>
+                    <Link to={`/chat/${buddy.matchedUser.id}`}>Send message</Link>
                     <User key={buddy.matchedUser.id} user={buddy.matchedUser} />
                   </>
                 ))

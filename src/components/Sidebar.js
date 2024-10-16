@@ -17,6 +17,9 @@ export default function Sidebar() {
       <Nav.Item>
         <Nav.Link as={NavLink} to="/buddies">Buddies</Nav.Link>
       </Nav.Item>
+      <Nav.Item>
+        <Nav.Link as={NavLink} to="/chat/id">Chat</Nav.Link>
+      </Nav.Item>
     </Navbar>
   );
 }

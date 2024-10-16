@@ -13,6 +13,7 @@ import PublicRoute from "./components/PublicRoute";
 import ProfilePage from "./pages/ProfilePage";
 import MatchingPage from "./pages/MatchingPage";
 import BuddiesPage from "./pages/BuddiesPage";
+import ChatPage from "./pages/ChatPage/ChatPage";
 
 export default function App() {
   return (
@@ -49,6 +50,7 @@ export default function App() {
                         <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/matching" element={<MatchingPage />} />
                         <Route path="/buddies" element={<BuddiesPage />} />
+                        <Route path="/chat/:buddyId" element={<ChatPage />} />
                         <Route path="*" element={<Navigate to="/" />} />
                       </Routes>
                     </PrivateRoute>

@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Stack from "react-bootstrap/Stack";
 import Sidebar from "./Sidebar";
 import FlashMessage from "./FlashMessage";
+import Notification from "./notification/Notification";
 
 export default function Body({ sidebar, children }) {
   return (
@@ -13,6 +14,7 @@ export default function Body({ sidebar, children }) {
           {children}
         </Container>
       </Stack>
+      <Notification />
     </Container>
   );
 }
