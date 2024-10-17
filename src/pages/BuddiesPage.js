@@ -51,10 +51,10 @@ export default function BuddiesPage() {
                 <p>No buddies</p>
               ) : (
                 buddies.map((buddy) => (
-                  <>
+                  <div key={buddy.matchedUser.id}>
                     <Link to={`/chat/${buddy.matchedUser.id}`}>Send message</Link>
                     <User key={buddy.matchedUser.id} user={buddy.matchedUser} />
-                  </>
+                  </div>
                 ))
               )}
               <More pagination={pagination} loadNextPage={loadNextPage} />

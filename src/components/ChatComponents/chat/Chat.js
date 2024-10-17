@@ -79,8 +79,6 @@ export default function Chat() {
       message
     );
     if (response.ok) {
-      setMessages([...messages, message]);
-      toast.success("Message sent");
     } else {
       toast.error("Message not sent");
     }
@@ -106,12 +104,12 @@ export default function Chat() {
       </div>
       <div className="center">
         {messages &&
-          messages.map((message) => (
+          messages.map((message, index) => (
             <div
               className={
-                message.senderId === user.id ? "message own" : "message"
+                message.senderId === user?.id ? "message own" : "message"
               }
-              key={message.id}
+              key={index}
             >
               <img src="/avatar.png" alt="" />
               <div className="texts">
