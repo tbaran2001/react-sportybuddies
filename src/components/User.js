@@ -1,7 +1,7 @@
 import Stack from "react-bootstrap/Stack";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
-import TimeAgo from "./TimeAgo";
+import TimeAgo from "./common/TimeAgo";
 import { getGravatarUrl } from "../utils/gravatar";
 
 export default function User({ user }) {

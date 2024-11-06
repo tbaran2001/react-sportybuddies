@@ -1,19 +1,19 @@
 import Container from "react-bootstrap/Container";
-import Header from "./components/Header";
+import Header from "./components/common/Header";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import AllUsersPage from "./pages/AllUsersPage";
-import UserPage from "./pages/UserPage";
-import LoginPage from "./pages/LoginPage";
-import RegistrationPage from "./pages/RegistrationPage";
+import AllUsersPage from "./pages/all-users/AllUsersPage";
+import UserPage from "./pages/user/UserPage";
+import LoginPage from "./pages/login/LoginPage";
+import RegistrationPage from "./pages/register/RegistrationPage";
 import ApiProvider from "./contexts/ApiProvider";
 import FlashProvider from "./contexts/FlashProvider";
 import UserProvider from "./contexts/UserProvider";
-import PrivateRoute from "./components/PrivateRoute";
-import PublicRoute from "./components/PublicRoute";
-import ProfilePage from "./pages/ProfilePage";
-import MatchingPage from "./pages/MatchingPage";
-import BuddiesPage from "./pages/BuddiesPage";
-import ChatPage from "./pages/ChatPage/ChatPage";
+import PrivateRoute from "./components/common/PrivateRoute";
+import PublicRoute from "./components/common/PublicRoute";
+import ProfilePage from "./pages/profile/ProfilePage";
+import MatchingPage from "./pages/matching/MatchingPage";
+import BuddiesPage from "./pages/buddies/BuddiesPage";
+import ChatPage from "./pages/chat/ChatPage";
 
 export default function App() {
   return (

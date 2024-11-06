@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Body from "../components/Body";
-import InputField from "../components/InputField";
-import { useUser } from "../contexts/UserProvider";
-import { useFlash } from "../contexts/FlashProvider";
+import Body from "../../components/common/Body";
+import InputField from "../../components/common/InputField";
+import { useUser } from "../../contexts/UserProvider";
+import { useFlash } from "../../contexts/FlashProvider";
 import { Link,useNavigate, useLocation } from "react-router-dom";
 
 

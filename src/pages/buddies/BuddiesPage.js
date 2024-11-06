@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
-import User from "../components/User";
-import { useApi } from "../contexts/ApiProvider";
-import More from "../components/More";
-import Body from "../components/Body";
+import User from "../../components/User";
+import { useApi } from "../../contexts/ApiProvider";
+import More from "../../components/common/More";
+import Body from "../../components/common/Body";
 import { Link } from "react-router-dom";
 
 export default function BuddiesPage() {

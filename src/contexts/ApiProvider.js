@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import SportybuddiesApiClient from '../SportybuddiesApiClient';
+import SportybuddiesApiClient from '../api/SportybuddiesApiClient';
 
 const ApiContext = createContext();
 

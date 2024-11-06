@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import User from "./User";
 import { useApi } from "../contexts/ApiProvider";
-import More from "./More";
+import More from "./common/More";
 
 export default function Users() {
   const [users, setUsers] = useState();

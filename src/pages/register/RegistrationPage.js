@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Body from "../components/Body";
-import InputField from "../components/InputField";
+import Body from "../../components/common/Body";
+import InputField from "../../components/common/InputField";
 import { Link, useNavigate } from "react-router-dom";
-import { useApi } from "../contexts/ApiProvider";
-import { useFlash } from "../contexts/FlashProvider";
-import { useUser } from "../contexts/UserProvider";
+import { useApi } from "../../contexts/ApiProvider";
+import { useFlash } from "../../contexts/FlashProvider";
+import { useUser } from "../../contexts/UserProvider";
 
 export default function RegistrationPage() {
   const [formErrors, setFormErrors] = useState({});

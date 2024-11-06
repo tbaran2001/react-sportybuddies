@@ -1,11 +1,11 @@
 import Spinner from "react-bootstrap/Spinner";
-import Body from "../components/Body";
-import { useUser } from "../contexts/UserProvider";
-import { getGravatarUrl } from "../utils/gravatar";
+import Body from "../../components/common/Body";
+import { useUser } from "../../contexts/UserProvider";
+import { getGravatarUrl } from "../../utils/gravatar";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
-import { useApi } from "../contexts/ApiProvider";
+import { useApi } from "../../contexts/ApiProvider";
 
 export default function ProfilePage() {
   const { user } = useUser();

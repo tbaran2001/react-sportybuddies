@@ -1,7 +1,7 @@
-import Body from "../../components/Body";
-import Chat from "../../components/ChatComponents/chat/Chat";
-import Detail from "../../components/ChatComponents/detail/Detail";
-import List from "../../components/ChatComponents/list/List";
+import Body from "../../components/common/Body";
+import Chat from "../../components/chat/Chat";
+import Detail from "../../components/chat/detail/Detail";
+import List from "../../components/chat/list/List";
 import "./ChatPage.css";
 
 export default function ChatPage() {

@@ -4,8 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { toast } from "react-toastify";
 import * as signalR from "@microsoft/signalr";
 import { useParams } from "react-router-dom";
-import { useApi } from "../../../contexts/ApiProvider";
-import { useUser } from "../../../contexts/UserProvider";
+import { useApi } from "../../contexts/ApiProvider";
+import { useUser } from "../../contexts/UserProvider";
 
 export default function Chat() {
   const { buddyId } = useParams();

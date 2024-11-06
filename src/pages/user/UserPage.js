@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useApi } from "../contexts/ApiProvider";
+import { useApi } from "../../contexts/ApiProvider";
 import Spinner from "react-bootstrap/Spinner";
-import Body from "../components/Body";
-import User from "../components/User";
+import Body from "../../components/common/Body";
+import User from "../../components/User";
 
 export default function UserPage() {
   const { id } = useParams();

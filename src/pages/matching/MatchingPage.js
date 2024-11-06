@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useApi } from "../contexts/ApiProvider";
+import { useApi } from "../../contexts/ApiProvider";
 import Spinner from "react-bootstrap/Spinner";
-import Body from "../components/Body";
-import User from "../components/User";
+import Body from "../../components/common/Body";
+import User from "../../components/User";
 
 export default function MatchingPage() {
   const api = useApi();
