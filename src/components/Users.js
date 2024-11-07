@@ -11,7 +11,7 @@ export default function Users() {
 
   useEffect(() => {
     (async () => {
-      const response = await api.get("/users");
+      const response = await api.get("/admin/users");
       if (response.ok) {
         setUsers(response.body);
         const paginationHeader = response.headers["x-pagination"];
@@ -25,7 +25,7 @@ export default function Users() {
   }, [api]);
 
   const loadNextPage = async () => {
-    const response = await api.get("/users", {
+    const response = await api.get("/admin/users", {
       pageSize: 10,
       pageNumber: pagination.CurrentPage + 1,
     });

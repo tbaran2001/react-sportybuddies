@@ -4,6 +4,7 @@ import { useApi } from "../../contexts/ApiProvider";
 import Spinner from "react-bootstrap/Spinner";
 import Body from "../../components/common/Body";
 import User from "../../components/User";
+import {getUser} from "../../api/users";
 
 export default function UserPage() {
   const { id } = useParams();
@@ -12,8 +13,8 @@ export default function UserPage() {
 
   useEffect(() => {
     (async () => {
-      const response = await api.get("/users/" + id);
-      setUser(response.ok ? response.body : null);
+        const user = await getUser(api, id);
+        setUser(user);
     })();
   }, [id, api]);
 

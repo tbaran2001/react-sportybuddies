@@ -3,6 +3,7 @@ import { useApi } from "../../contexts/ApiProvider";
 import Spinner from "react-bootstrap/Spinner";
 import Body from "../../components/common/Body";
 import User from "../../components/User";
+import {getRandomMatch,swipeMatch} from "../../api/matching";
 
 export default function MatchingPage() {
   const api = useApi();
@@ -10,28 +11,14 @@ export default function MatchingPage() {
 
   useEffect(() => {
     (async () => {
-      const response = await api.get("/currentuser/matches/random");
-      if (response.ok) {
-        setMatch(response.body);
-      } else {
-        setMatch(null);
-      }
+      const match=await getRandomMatch(api);
+        setMatch(match);
     })();
   }, [api]);
 
   const swipe = async (direction) => {
-    const response = await api.put("/currentuser/matches/" + match.id, {
-      swipe: direction === "right" ? 1 : 2,
-      swipeDateTime: new Date().toISOString(),
-    });
-    if (response.ok) {
-      const response = await api.get("/currentuser/matches/random");
-      if (response.ok) {
-        setMatch(response.body);
-      } else {
-        setMatch(null);
-      }
-    }
+    const newMatch = await swipeMatch(api, match.id, direction);
+    setMatch(newMatch);
   };
 
   return (

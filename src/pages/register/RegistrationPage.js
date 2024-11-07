@@ -7,10 +7,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useApi } from "../../contexts/ApiProvider";
 import { useFlash } from "../../contexts/FlashProvider";
 import { useUser } from "../../contexts/UserProvider";
+import {registerUser} from "../../api/auth";
 
 export default function RegistrationPage() {
   const [formErrors, setFormErrors] = useState({});
-  const usernameField = useRef();
   const emailField = useRef();
   const passwordField = useRef();
   const password2Field = useRef();
@@ -30,9 +30,6 @@ export default function RegistrationPage() {
     event.preventDefault();
     const errors = {};
 
-    if (!usernameField.current.value) {
-      errors.username = "Username is required";
-    }
     if (!emailField.current.value) {
       errors.email = "Email is required";
     }
@@ -49,31 +46,15 @@ export default function RegistrationPage() {
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
     } else {
-      const data = await api.post("/register", {
-        email: email,
-        password: password,
-      });
+      const data = await registerUser(api, email, password);
       if (!data.ok) {
         setFormErrors(data.body.errors.json);
       } else {
         setFormErrors({});
         flash("You have successfully registered!", "success");
 
-        // Log in the user
         await login(email, password);
 
-        //send patch request to update username
-        const response = await api.patch("/currentuser", [
-          {
-            op: "replace",
-            path: "/UserName",
-            value: usernameField.current.value,
-          },
-        ]);
-        if (!response.ok) {
-          flash("Failed to update username", "danger");
-        }
-        await login(email, password);
         navigate("/profile");
       }
     }
@@ -83,12 +64,6 @@ export default function RegistrationPage() {
     <Body>
       <h1>Register</h1>
       <Form onSubmit={onSubmit}>
-        <InputField
-          name="username"
-          label="Username"
-          error={formErrors.username}
-          fieldRef={usernameField}
-        />
         <InputField
           name="email"
           label="Email address"

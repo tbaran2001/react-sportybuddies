@@ -2,41 +2,27 @@ import { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import User from "../../components/User";
 import { useApi } from "../../contexts/ApiProvider";
-import More from "../../components/common/More";
 import Body from "../../components/common/Body";
 import { Link } from "react-router-dom";
+import {getBuddies} from "../../api/buddies";
+import {getUser} from "../../api/users";
 
 export default function BuddiesPage() {
   const [buddies, setBuddies] = useState();
-  const [pagination, setPagination] = useState({ pageSize: 10, pageNumber: 1 });
   const api = useApi();
 
   useEffect(() => {
     (async () => {
-      const response = await api.get("/currentuser/buddies");
-      if (response.ok) {
-        setBuddies(response.body);
-        const paginationHeader = response.headers["x-pagination"];
-        if (paginationHeader) {
-          setPagination(JSON.parse(paginationHeader));
-        }
-      } else {
-        setBuddies(null);
-      }
+        const buddies = await getBuddies(api);
+        setBuddies(buddies);
     })();
   }, [api]);
-
-  const loadNextPage = async () => {
-    const response = await api.get("/currentuser/buddies", {
-      pageSize: 10,
-      pageNumber: pagination.CurrentPage + 1,
-    });
-    if (response.ok) {
-      setBuddies([...buddies, ...response.body]);
-      setPagination(JSON.parse(response.headers["x-pagination"]));
-    }
-  };
-
+  
+  const getMatchedUser = async (userId) => {
+    const user = await getUser(api, userId);
+    return user;
+  }
+  
   return (
     <Body sidebar>
       {buddies === undefined ? (
@@ -51,13 +37,12 @@ export default function BuddiesPage() {
                 <p>No buddies</p>
               ) : (
                 buddies.map((buddy) => (
-                  <div key={buddy.matchedUser.id}>
-                    <Link to={`/chat/${buddy.matchedUser.id}`}>Send message</Link>
-                    <User key={buddy.matchedUser.id} user={buddy.matchedUser} />
+                  <div key={buddy.matchedUserId}>
+                    <Link to={`/chat/${buddy.matchedUserId}`}>Send message</Link>
+                    <User key={buddy.matchedUserId} user={getMatchedUser(buddy.matchedUserId)} />
                   </div>
                 ))
               )}
-              <More pagination={pagination} loadNextPage={loadNextPage} />
             </>
           )}
         </>

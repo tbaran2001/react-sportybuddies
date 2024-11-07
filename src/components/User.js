@@ -11,9 +11,8 @@ export default function User({ user }) {
       <Image src={gravatarUrl} roundedCircle width={64} height={64} />
       <div>
         <p>
-          <Link to={`/user/${user.id}`}>{user.userName}</Link>
+          <Link to={`/user/${user.id}`}>{user.name}</Link>
           &nbsp;&mdash;&nbsp;
-          <TimeAgo isoDate={user.lastActive} />
         </p>
         <p>{user.description}</p>
         {user.sports && (
