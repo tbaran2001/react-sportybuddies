@@ -14,6 +14,7 @@ import ProfilePage from "./pages/profile/ProfilePage";
 import MatchingPage from "./pages/matching/MatchingPage";
 import BuddiesPage from "./pages/buddies/BuddiesPage";
 import ChatPage from "./pages/chat/ChatPage";
+import UserProfile from "./pages/UserProfile/UserProfile";
 
 export default function App() {
   return (
@@ -48,6 +49,7 @@ export default function App() {
                         <Route path="/" element={<AllUsersPage />} />
                         <Route path="/user/:id" element={<UserPage />} />
                         <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/userprofile" element={<UserProfile />} />
                         <Route path="/matching" element={<MatchingPage />} />
                         <Route path="/buddies" element={<BuddiesPage />} />
                         <Route path="/chat/:buddyId" element={<ChatPage />} />
