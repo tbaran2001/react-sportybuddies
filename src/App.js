@@ -15,6 +15,11 @@ import MatchingPage from "./pages/matching/MatchingPage";
 import BuddiesPage from "./pages/buddies/BuddiesPage";
 import ChatPage from "./pages/chat/ChatPage";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import UserProfilePage from "./components/Pages/UserProfile/UserProfilePage";
+import UserBuddiesPage from "./components/Pages/UserBuddies/UserBuddiesPage";
+import UserMatchingPage from "./components/Pages/UserMatching/UserMatchingPage";
+import UserChatPage from "./components/Pages/UserChat/UserChatPage";
+import Navbar from "./components/Navbar/Navbar";
 
 export default function App() {
   return (
@@ -23,7 +28,7 @@ export default function App() {
         <FlashProvider>
           <ApiProvider>
             <UserProvider>
-              <Header />
+              <Navbar />
               <Routes>
                 <Route
                   path="/login"
@@ -54,6 +59,10 @@ export default function App() {
                         <Route path="/buddies" element={<BuddiesPage />} />
                         <Route path="/chat/:buddyId" element={<ChatPage />} />
                         <Route path="*" element={<Navigate to="/" />} />
+                        <Route path="/UserProfilePage" element={<UserProfilePage />} />
+                        <Route path="/UserMatchingPage" element={<UserMatchingPage />} />
+                        <Route path="/UserBuddiesPage" element={<UserBuddiesPage />} />
+                        <Route path="/UserChatPage" element={<UserChatPage />} />
                       </Routes>
                     </PrivateRoute>
                   }
