@@ -7,6 +7,6 @@ This project is an frontend implementation for the "SportyBuddies" application, 
 ### Built With
 
 - React
+- MUI
 
 - JetBrains WebStorm
-- Visual Studio Code
