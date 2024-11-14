@@ -5,7 +5,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
 import {styled} from "@mui/material/styles";
 import Body from "../../Body";
-import UserCard from "../../UserCard";
+import UserCard from "../../UserCard/UserCard";
 
 const SwipeBox = styled(Box)(({theme}) => ({
     flex:"1",

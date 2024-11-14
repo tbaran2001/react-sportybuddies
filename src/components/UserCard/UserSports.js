@@ -4,7 +4,7 @@ import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import {styled} from "@mui/material/styles";
 
 const StyledBox = styled(Box)(({theme}) => ({
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.main,
 }));
 
 export default function UserSports() {
