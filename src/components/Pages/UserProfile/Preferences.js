@@ -3,7 +3,7 @@ import {Box, Typography} from "@mui/material";
 import PreferencesForm from "./PreferencesForm";
 import SportsForm from "./SportsForm";
 
-export default function Preferences() {
+export default function Preferences({userSports, handleSportsChange}) {
 
     return (
         <Box flex={1}>
@@ -11,7 +11,7 @@ export default function Preferences() {
                 Edit your preferences
             </Typography>
             <PreferencesForm/>
-            <SportsForm/>
+            <SportsForm userSports={userSports} handleSportsChange={handleSportsChange}/>
         </Box>
     );
 }

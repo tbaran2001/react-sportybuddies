@@ -51,7 +51,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     },
 }));
 
-export default function UserCard({user, isCurrentUser}) {
+export default function UserCard({user,userSports, isCurrentUser}) {
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
@@ -63,7 +63,7 @@ export default function UserCard({user, isCurrentUser}) {
             <Card sx={{backgroundColor: 'primary.main'}}>
                 <UserCardHeader user={user} />
                 <UserCardMedia image="https://randomuser.me/api/portraits/men/20.jpg" />
-                <UserCardContent />
+                <UserCardContent userSports={userSports}/>
                 <UserCardActions expanded={expanded} onExpandClick={handleExpandClick} />
                 <UserCardCollapse expanded={expanded} description={user.description} />
             </Card>
