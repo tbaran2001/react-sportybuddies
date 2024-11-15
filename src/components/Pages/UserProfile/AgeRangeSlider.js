@@ -15,11 +15,12 @@ const marks = [
 ];
 
 
-export default function AgeRangeSlider() {
-    const [value, setValue] = React.useState([18, 37]);
+export default function AgeRangeSlider({minAge, maxAge, onChange}) {
+    const [value, setValue] = React.useState([minAge, maxAge]);
 
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
+        onChange(newValue);
     };
 
     const handleInputChange = (index) => (event) => {
@@ -30,11 +31,13 @@ export default function AgeRangeSlider() {
         if (newValue[1] > 120) newValue[1] = 120;
         if (newValue[0] > newValue[1]) newValue[index === 0 ? 1 : 0] = newValue[index];
         setValue(newValue);
+        onChange(newValue);
     };
 
     const handleBlur = () => {
         if (value[0] < 18) setValue([18, value[1]]);
         if (value[1] > 120) setValue([value[0], 120]);
+        onChange(value);
     };
 
     return (

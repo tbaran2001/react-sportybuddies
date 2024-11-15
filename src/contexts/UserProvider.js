@@ -1,6 +1,6 @@
 import {createContext, useContext, useState, useEffect} from "react";
 import {useApi} from "./ApiProvider";
-import {getCurrentUser, loginUser, logoutUser} from "../api/users";
+import {getCurrentUser, loginUser, logoutUser, updateUserPreferences} from "../api/users";
 
 const UserContext = createContext();
 
@@ -26,8 +26,12 @@ export default function UserProvider({children}) {
         setUser(null);
     };
 
+    const updatePreferences = async (minAge, maxAge, maxDistance, gender) => {
+        await updateUserPreferences(api, minAge, maxAge, maxDistance, gender);
+    }
+
     return (
-        <UserContext.Provider value={{user, setUser, login, logout}}>
+        <UserContext.Provider value={{user, setUser, login, logout, updatePreferences}}>
             {children}
         </UserContext.Provider>
     );

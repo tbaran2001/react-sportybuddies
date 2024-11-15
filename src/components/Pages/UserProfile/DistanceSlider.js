@@ -15,11 +15,12 @@ const marks = [
     },
 ];
 
-export default function DistanceSlider() {
-    const [value, setValue] = React.useState(50);
+export default function DistanceSlider({maxDistance, onChange}) {
+    const [value, setValue] = React.useState(maxDistance);
 
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
+        onChange(newValue);
     };
 
     const handleInputChange = (event) => {
@@ -27,11 +28,13 @@ export default function DistanceSlider() {
         if (newValue < 1) newValue = 1;
         if (newValue > 100) newValue = 100;
         setValue(newValue);
+        onChange(newValue);
     };
 
     const handleBlur = () => {
         if (value < 1) setValue(1);
         if (value > 100) setValue(100);
+        onChange(value);
     };
 
     return (

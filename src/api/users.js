@@ -23,3 +23,13 @@ export const loginUser = async (api, email, password) => {
 export const logoutUser = async (api) => {
     await api.logout();
 };
+
+export const updateUserPreferences = async (api, minAge,maxAge,maxDistance,gender) => {
+    const response = await api.put("/users/preferences", {
+        minAge: minAge,
+        maxAge: maxAge,
+        maxDistance: maxDistance,
+        gender: gender,
+    });
+    return response.ok;
+};
