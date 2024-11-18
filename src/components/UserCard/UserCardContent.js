@@ -1,50 +1,23 @@
 import React, {useEffect} from 'react';
 import {Box, CardContent} from '@mui/material';
-import {
-    AcUnit, DirectionsBike, DirectionsRun, DownhillSkiing,
-    FitnessCenter, Hiking, Pool, SelfImprovement,
-    Snowboarding,
-    SportsBasketball,
-    SportsMma,
-    SportsSoccer, SportsTennis, SportsVolleyball,
-    Surfing
-} from "@mui/icons-material";
+import {sportsIcons} from "../Pages/UserProfile/sportsIcons";
+import {styled} from "@mui/system";
+import Tooltip from "@mui/material/Tooltip";
 
-
-const sportsIcons = {
-    Gym: FitnessCenter,
-    Badminton: AcUnit,
-    Boxing: SportsMma,
-    Football: SportsSoccer,
-    Climbing: AcUnit,
-    Surfing: Surfing,
-    Basketball: SportsBasketball,
-    Snowboarding: Snowboarding,
-    Hiking: Hiking,
-    Yoga: SelfImprovement,
-    Volleyball: SportsVolleyball,
-    Cycling: DirectionsBike,
-    Swimming: Pool,
-    Dance: AcUnit,
-    Tennis: SportsTennis,
-    "Table Tennis": AcUnit,
-    Running: DirectionsRun,
-    "Martial Arts": AcUnit,
-    Skiing: DownhillSkiing,
-    Pilates: AcUnit,
-};
+const IconBox = styled(Box)(({theme}) => ({
+    fontSize: 40,
+}));
 
 export default function UserCardContent({userSports}) {
-
 
     return (
         <CardContent>
             <Box display="flex" justifyContent="center">
-                {userSports.map(sport => {
-                        const Icon = sportsIcons[sport.name];
-                        return <Icon key={sport.id} sx={{fontSize: 40}}/>
-                    }
-                )}
+                {userSports.map(({id, name}) => (
+                    <Tooltip key={id} title={name} arrow>
+                        <IconBox component={sportsIcons[name] || sportsIcons['default']}/>
+                    </Tooltip>
+                ))}
             </Box>
         </CardContent>
     );

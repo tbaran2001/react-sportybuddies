@@ -62,7 +62,7 @@ export default function UserCard({user,userSports, isCurrentUser}) {
         <StyledPaper>
             <Card sx={{backgroundColor: 'primary.main'}}>
                 <UserCardHeader user={user} />
-                <UserCardMedia image="https://randomuser.me/api/portraits/men/20.jpg" />
+                <UserCardMedia image={"https://images.pexels.com/photos/22873652/pexels-photo-22873652/free-photo-of-filizanka-kawy-z-lyzeczka.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} />
                 <UserCardContent userSports={userSports}/>
                 <UserCardActions expanded={expanded} onExpandClick={handleExpandClick} />
                 <UserCardCollapse expanded={expanded} description={user.description} />
