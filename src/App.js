@@ -62,7 +62,7 @@ export default function App() {
                         <Route path="/UserProfilePage" element={<UserProfilePage />} />
                         <Route path="/UserMatchingPage" element={<UserMatchingPage />} />
                         <Route path="/UserBuddiesPage" element={<UserBuddiesPage />} />
-                        <Route path="/UserChatPage" element={<UserChatPage />} />
+                        <Route path="/UserChatPage/:conversationId" element={<UserChatPage />} />
                       </Routes>
                     </PrivateRoute>
                   }

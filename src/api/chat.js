@@ -43,3 +43,44 @@ export const sendMessage = async (api, buddyId, content) => {
         toast.error("Message not sent");
     }
 };
+
+export const GetConversation= async (api,conversationId) => {
+    try {
+        const response = await api.get(`/conversations/${conversationId}`);
+        return response.ok ? response.body : null;
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+        return null;
+    }
+}
+
+export const GetConversationMessages= async (api,conversationId) => {
+    try {
+        const response = await api.get(`/conversations/${conversationId}/messages`);
+        return response.ok ? response.body : null;
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+        return null;
+    }
+}
+
+export const SendMessageToConversation= async (api,conversationId, content) => {
+    try {
+        const response = await api.post(`/conversations/${conversationId}/messages`, { content });
+        return response.ok ? response.body : null;
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+        return null;
+    }
+}
+
+
+export const GetConversationsWithLastMessage= async (api) => {
+    try {
+        const response = await api.get(`/conversations/LastMessages`);
+        return response.ok ? response.body : null;
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+        return null;
+    }
+}
