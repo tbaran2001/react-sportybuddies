@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, List, ListItem, ListItemButton, ListItemText, ListItemIcon } from "@mui/material";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import PeopleIcon from '@mui/icons-material/People';
-import ChatIcon from '@mui/icons-material/Chat';
 import JoinInnerIcon from '@mui/icons-material/JoinInner';
 import { NavLink } from 'react-router-dom';
 
@@ -11,7 +10,6 @@ export default function Sidebar() {
         { path: "/UserProfilePage", label: "Profile", icon: <AccountBoxIcon /> },
         { path: "/UserMatchingPage", label: "Matching", icon: <JoinInnerIcon /> },
         { path: "/UserBuddiesPage", label: "Buddies", icon: <PeopleIcon /> },
-        { path: "/UserChatPage", label: "Chat", icon: <ChatIcon /> },
     ];
 
     return (
