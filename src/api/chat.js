@@ -1,5 +1,5 @@
 import * as signalR from "@microsoft/signalr";
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 
 // Initializes the SignalR connection
 export const initializeConnection = (onMessageReceived) => {
@@ -34,7 +34,7 @@ export const fetchMessages = async (api, buddyId) => {
 // Sends a message to a specific buddy
 export const sendMessage = async (api, buddyId, content) => {
     try {
-        const response = await api.post(`/messages/${buddyId}`, { content });
+        const response = await api.post(`/messages/${buddyId}`, {content});
         if (!response.ok) {
             toast.error("Message not sent");
         }
@@ -44,7 +44,17 @@ export const sendMessage = async (api, buddyId, content) => {
     }
 };
 
-export const GetConversation= async (api,conversationId) => {
+export const CreateConversation = async (api, userId) => {
+    try {
+        const response = await api.post(`/conversations`, {participantId: userId});
+        return response.ok ? response.body : null;
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+        return null;
+    }
+}
+
+export const GetConversation = async (api, conversationId) => {
     try {
         const response = await api.get(`/conversations/${conversationId}`);
         return response.ok ? response.body : null;
@@ -54,7 +64,7 @@ export const GetConversation= async (api,conversationId) => {
     }
 }
 
-export const GetConversationMessages= async (api,conversationId) => {
+export const GetConversationMessages = async (api, conversationId) => {
     try {
         const response = await api.get(`/conversations/${conversationId}/messages`);
         return response.ok ? response.body : null;
@@ -64,9 +74,9 @@ export const GetConversationMessages= async (api,conversationId) => {
     }
 }
 
-export const SendMessageToConversation= async (api,conversationId, content) => {
+export const SendMessageToConversation = async (api, conversationId, content) => {
     try {
-        const response = await api.post(`/conversations/${conversationId}/messages`, { content });
+        const response = await api.post(`/conversations/${conversationId}/messages`, {content});
         return response.ok ? response.body : null;
     } catch (error) {
         console.error("Error fetching messages:", error);
@@ -75,7 +85,7 @@ export const SendMessageToConversation= async (api,conversationId, content) => {
 }
 
 
-export const GetConversationsWithLastMessage= async (api) => {
+export const GetConversationsWithLastMessage = async (api) => {
     try {
         const response = await api.get(`/conversations/LastMessages`);
         return response.ok ? response.body : null;

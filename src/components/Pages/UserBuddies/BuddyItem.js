@@ -2,6 +2,9 @@ import React, {memo} from "react";
 import {Avatar, Button, ListItem, ListItemAvatar, ListItemText, Typography, useTheme} from "@mui/material";
 import {styled} from "@mui/system";
 import {IoMdSend} from "react-icons/io";
+import {Link, useNavigate} from "react-router-dom";
+import {CreateConversation} from "../../../api/chat";
+import {useApi} from "../../../contexts/ApiProvider";
 
 
 const StyledButton = styled(Button)(({theme}) => ({
@@ -20,8 +23,25 @@ const StyledListItem = styled(ListItem)(({theme}) => ({
     }
 }));
 
-export const BuddyItem = memo(({buddy, onSendMessage}) => {
+export const BuddyItem = memo(({buddy}) => {
     const theme = useTheme();
+    const navigate = useNavigate();
+    const api = useApi();
+
+    const handleButtonClick = async () => {
+        try {
+            let conversationId = buddy.conversation?.id;
+
+            if (!conversationId) {
+                const newConversation = await CreateConversation(api,buddy.matchedUser.id);
+                conversationId = newConversation.id;
+            }
+
+            navigate(`/UserChatPage/${conversationId}`);
+        } catch (error) {
+            console.error("Failed to create or navigate to conversation:", error);
+        }
+    };
 
     return (
         <StyledListItem>
@@ -57,11 +77,11 @@ export const BuddyItem = memo(({buddy, onSendMessage}) => {
             <StyledButton
                 variant="contained"
                 color="primary"
-                startIcon={<IoMdSend/>}
-                onClick={() => onSendMessage(buddy.matchedUser.name)}
-                aria-label={`Send message to ${buddy.matchedUser.name}`}
+                startIcon={<IoMdSend />}
+                onClick={handleButtonClick}
+                aria-label={`Start or go to conversation with ${buddy.matchedUser.name}`}
             >
-                Send Message
+                Start Chat
             </StyledButton>
         </StyledListItem>
     );

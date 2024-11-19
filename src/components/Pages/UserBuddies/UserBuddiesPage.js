@@ -2,8 +2,6 @@ import React, {useEffect, useState} from "react";
 import {
     Box,
     Typography,
-    ListItem,
-    Button,
     Paper,
     useTheme, List,
 } from "@mui/material";
@@ -31,10 +29,6 @@ export default function UserBuddiesPage() {
         })();
     }, [api]);
 
-    const handleSendMessage = (name) => {
-        console.log(`Send message to ${name}`);
-    };
-
     return (
         <Body sidebar>
             <Box flex={4}>
@@ -51,7 +45,6 @@ export default function UserBuddiesPage() {
                             <BuddyItem
                                 key={buddy.id}
                                 buddy={buddy}
-                                onSendMessage={handleSendMessage}
                             />
                         ))}
                     </List>

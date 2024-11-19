@@ -76,6 +76,14 @@ export default function UserChatPage() {
         })();
     };
 
+    const getOtherParticipantName = () => {
+        if (!conversation || !conversation.participants) return "--";
+
+        const otherParticipant = conversation.participants.find(
+            (participant) => participant.user.id !== user.id
+        );
+        return otherParticipant?.user?.name || "--";
+    };
 
     return (
         <Body sidebar>
@@ -83,7 +91,7 @@ export default function UserChatPage() {
                 <StyledPaper elevation={10}>
                     <Box sx={{flex: 1, display: "flex", flexDirection: "column"}}>
                         <ChatHeader
-                            participantName={conversation?.participants[1]?.user?.name || "Unknown"}
+                            participantName={getOtherParticipantName()}
                         />
                         <MessageList
                             messages={conversationMessages}
