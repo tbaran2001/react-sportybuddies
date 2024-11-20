@@ -5,7 +5,7 @@ import {
     styled
 } from "@mui/material";
 import Body from "../../Body";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useApi} from "../../../contexts/ApiProvider";
 import {
     GetConversation,
@@ -30,6 +30,7 @@ export default function UserChatPage() {
     const [conversationMessages, setConversationMessages] = useState([]);
     const messagesEndRef = useRef(null);
     const {conversationId} = useParams();
+    const navigate = useNavigate();
     const {user} = useUser();
     const api = useApi();
     const [connection, setConnection] = useState(null);
@@ -49,15 +50,19 @@ export default function UserChatPage() {
         (async () => {
             try {
                 const conversationData = await GetConversation(api, conversationId);
+                if (!conversationData) {
+                    navigate("/UserProfilePage", { replace: true });
+                    return;
+                }
                 setConversation(conversationData);
                 const messages = await GetConversationMessages(api, conversationId);
                 setConversationMessages(messages);
             } catch (error) {
                 console.error("Error fetching conversation or messages:", error);
+                navigate("/UserProfilePage", { replace: true }); // Navigate on error
             }
         })();
-    }, [api, conversationId]);
-
+    }, [api, conversationId, navigate]);
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({behavior: "smooth"});
     };

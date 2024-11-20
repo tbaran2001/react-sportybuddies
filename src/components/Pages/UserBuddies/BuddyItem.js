@@ -34,7 +34,18 @@ export const BuddyItem = memo(({buddy}) => {
 
             if (!conversationId) {
                 const newConversation = await CreateConversation(api,buddy.matchedUser.id);
+                if(!newConversation) {
+                    console.error("Failed to create conversation");
+                    window.location.reload();
+                    return;
+                }
                 conversationId = newConversation.id;
+            }
+
+            if (!conversationId) {
+                console.error("Invalid conversation ID");
+                navigate("/UserProfilePage");
+                return;
             }
 
             navigate(`/UserChatPage/${conversationId}`);
@@ -57,7 +68,6 @@ export const BuddyItem = memo(({buddy}) => {
             >
                 <Avatar
                     alt={buddy.matchedUser.name}
-                    src={`https://images.unsplash.com/photo-1534528741775-53994a69daeb`}
                     sx={{width: 60, height: 60}}
                 />
             </ListItemAvatar>
