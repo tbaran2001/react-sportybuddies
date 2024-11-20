@@ -12,6 +12,8 @@ import UserBuddiesPage from "./components/Pages/UserBuddies/UserBuddiesPage";
 import UserMatchingPage from "./components/Pages/UserMatching/UserMatchingPage";
 import UserChatPage from "./components/Pages/UserChat/UserChatPage";
 import Navbar from "./components/Navbar/Navbar";
+import SignInPage from "./components/Pages/SignIn/SignInPage";
+import SignUp from "./components/Pages/SignUp/SignUpPage";
 
 export default function App() {
   return (
@@ -26,7 +28,7 @@ export default function App() {
                   path="/login"
                   element={
                     <PublicRoute>
-                      <LoginPage />
+                      <SignInPage />
                     </PublicRoute>
                   }
                 />
@@ -34,7 +36,7 @@ export default function App() {
                   path="/register"
                   element={
                     <PublicRoute>
-                      <RegistrationPage />
+                      <SignUp />
                     </PublicRoute>
                   }
                 />
