@@ -1,7 +1,5 @@
 import Container from "react-bootstrap/Container";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import LoginPage from "./pages/login/LoginPage";
-import RegistrationPage from "./pages/register/RegistrationPage";
 import ApiProvider from "./contexts/ApiProvider";
 import FlashProvider from "./contexts/FlashProvider";
 import UserProvider from "./contexts/UserProvider";

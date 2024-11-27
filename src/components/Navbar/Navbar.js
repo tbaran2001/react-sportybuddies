@@ -87,7 +87,7 @@ const Navbar = () => {
 
     const drawer = (
         <List>
-            <ListItem button aria-label="Messages">
+            <ListItem aria-label="Messages">
                 <ListItemIcon>
                     <Badge badgeContent={messageCount} color="error">
                         <FaEnvelope size={24} />
@@ -95,7 +95,7 @@ const Navbar = () => {
                 </ListItemIcon>
                 <ListItemText primary="Messages" />
             </ListItem>
-            <ListItem button aria-label="Notifications">
+            <ListItem aria-label="Notifications">
                 <ListItemIcon>
                     <Badge badgeContent={notificationCount} color="error">
                         <FaBell size={24} />
@@ -103,7 +103,7 @@ const Navbar = () => {
                 </ListItemIcon>
                 <ListItemText primary="Notifications" />
             </ListItem>
-            <ListItem button onClick={handleProfileMenuOpen} aria-label="Profile">
+            <ListItem onClick={handleProfileMenuOpen} aria-label="Profile">
                 <ListItemIcon>
                     <FaUser size={24} />
                 </ListItemIcon>
