@@ -1,10 +1,11 @@
-import React, {useEffect, useState, useReducer} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Box, Checkbox} from '@mui/material';
 import {styled} from '@mui/system';
 import {sportsIcons} from './sportsIcons';
 import {getAllSports} from "../../../api/sports";
 import {useApi} from "../../../contexts/ApiProvider";
 import Tooltip from "@mui/material/Tooltip";
+import {useUserSports} from "../../../contexts/UserSportsProvider";
 
 const StyledCheckbox = styled(Checkbox)(({theme}) => ({
     '& .MuiSvgIcon-root': {
@@ -12,9 +13,10 @@ const StyledCheckbox = styled(Checkbox)(({theme}) => ({
     },
 }));
 
-function SportsPicker({userSports, handleSportsChange}) {
+function SportsPicker() {
     const api = useApi();
     const [allSports, setAllSports] = useState([]);
+    const {userSports, addSport, removeSport} = useUserSports();
 
     useEffect(() => {
         (async () => {
@@ -22,6 +24,14 @@ function SportsPicker({userSports, handleSportsChange}) {
             setAllSports(sports);
         })();
     }, []);
+
+    const handleToggleSport = (sport) => {
+        if (userSports.some((s) => s.id === sport.id)) {
+            removeSport(sport.id);
+        } else {
+            addSport(sport);
+        }
+    };
 
     return (
         <Box display="flex" flexDirection="row" flexWrap="wrap" justifyContent="center">
@@ -33,7 +43,7 @@ function SportsPicker({userSports, handleSportsChange}) {
                         <Tooltip title={name} arrow>
                             <StyledCheckbox
                                 checked={isChecked}
-                                onChange={() => handleSportsChange({id, name})}
+                                onChange={() => handleToggleSport({id, name})}
                                 icon={<Icon aria-label={name}/>}
                                 checkedIcon={<Icon aria-label={name}/>}
                             />
