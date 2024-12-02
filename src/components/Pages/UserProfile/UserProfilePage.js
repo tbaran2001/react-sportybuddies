@@ -14,7 +14,7 @@ export default function UserProfilePage() {
         <Body sidebar>
             <Stack flex={4} direction="row" spacing={2} justifyContent={"space-between"}>
                 <UserSportsProvider>
-                    <UserCard user={user} isCurrentUser/>
+                    <UserCard user={user} userSports={user.sports}/>
                     <Preferences/>
                 </UserSportsProvider>
             </Stack>

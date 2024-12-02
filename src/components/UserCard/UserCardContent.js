@@ -9,8 +9,8 @@ const IconBox = styled(Box)(({theme}) => ({
     fontSize: 40,
 }));
 
-export default function UserCardContent() {
-    const {userSports} = useUserSports();
+export default function UserCardContent({userSports}) {
+
 
     return (
         <CardContent>
