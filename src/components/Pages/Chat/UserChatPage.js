@@ -12,7 +12,7 @@ import {
     GetConversationMessages, initializeConnection,
     SendMessageToConversation
 } from "../../../api/chat";
-import {useUser} from "../../../contexts/UserProvider";
+import {useUser} from "../../../contexts/ProfileProvider";
 import ChatHeader from "./ChatHeader";
 import MessageList from "./MessageList";
 import InputBox from "./InputBox";

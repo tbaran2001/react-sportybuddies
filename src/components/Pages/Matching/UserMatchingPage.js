@@ -5,7 +5,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
 import {styled} from "@mui/material/styles";
 import Body from "../../Body";
-import UserCard from "../../UserCard/UserCard";
+import ProfileCard from "../../ProfileCard/ProfileCard";
 import {useApi} from "../../../contexts/ApiProvider";
 import {getRandomMatch, swipeMatch} from "../../../api/matching";
 import Spinner from "react-bootstrap/Spinner";
@@ -44,7 +44,7 @@ export default function UserMatchingPage() {
                             <ThumbDownOutlinedIcon fontSize="large"/>
                         </IconButton>
                     </SwipeBox>
-                    <UserCard user={match.matchedUser} userSports={match.matchedUser.sports}/>
+                    <ProfileCard user={match.matchedUser} userSports={match.matchedUser.sports}/>
                     <SwipeBox>
                         <IconButton onClick={() => swipe('right')} aria-label="Swipe Right" size="large">
                             <FavoriteBorderOutlinedIcon fontSize="large"/>

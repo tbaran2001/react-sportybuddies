@@ -13,7 +13,7 @@ import {
 import {styled} from "@mui/system";
 import {FaEye, FaEyeSlash, FaEnvelope, FaLock} from "react-icons/fa";
 import {Link, useLocation, useNavigate} from "react-router-dom";
-import {useUser} from "../../../contexts/UserProvider";
+import {useUser} from "../../../contexts/ProfileProvider";
 import {useFlash} from "../../../contexts/FlashProvider";
 
 const StyledPaper = styled(Paper)(({theme}) => ({

@@ -16,7 +16,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {registerUser} from "../../../api/auth";
 import {useApi} from "../../../contexts/ApiProvider";
 import {useFlash} from "../../../contexts/FlashProvider";
-import {useUser} from "../../../contexts/UserProvider";
+import {useUser} from "../../../contexts/ProfileProvider";
 
 const StyledPaper = styled(Paper)(({theme}) => ({
     padding: "2rem",

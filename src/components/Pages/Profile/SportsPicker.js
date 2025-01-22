@@ -5,7 +5,7 @@ import {sportsIcons} from './sportsIcons';
 import {getAllSports} from "../../../api/sports";
 import {useApi} from "../../../contexts/ApiProvider";
 import Tooltip from "@mui/material/Tooltip";
-import {useUserSports} from "../../../contexts/UserSportsProvider";
+import {useUserSports} from "../../../contexts/ProfileSportsProvider";
 
 const StyledCheckbox = styled(Checkbox)(({theme}) => ({
     '& .MuiSvgIcon-root': {

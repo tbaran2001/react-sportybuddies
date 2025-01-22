@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useEffect, useState, useCallback} from 'react';
 import {useApi} from "./ApiProvider";
-import {addUserSport, getCurrentUserSports, removeUserSport} from "../api/sports";
+import {addUserSport, removeUserSport} from "../api/sports";
+import {useUser} from "./ProfileProvider";
 
 const UserSportsContext = createContext(null);
 
@@ -8,16 +9,14 @@ export const useUserSports = () => {
     return useContext(UserSportsContext);
 };
 
-export const UserSportsProvider = ({children}) => {
+export const ProfileSportsProvider = ({children}) => {
     const api = useApi();
-    const [userSports, setUserSports] = useState([]);
+    const {user} = useUser();
+    const [userSports, setUserSports] = useState(user.sports || []);
 
     useEffect(() => {
-        (async () => {
-            const sports = await getCurrentUserSports(api);
-            setUserSports(sports);
-        })();
-    }, [api]);
+        setUserSports(user.sports || []);
+    }, [user.sports]);
 
     const addSport = useCallback(
         async (sport) => {

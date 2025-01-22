@@ -3,7 +3,7 @@ import { Box, IconButton, Typography } from '@mui/material';
 import CardHeader from '@mui/material/CardHeader';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-export default function UserCardHeader({ user }) {
+export default function ProfileCardHeader({ user }) {
     return (
         <CardHeader
             action={

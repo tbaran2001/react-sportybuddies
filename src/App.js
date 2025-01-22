@@ -2,13 +2,13 @@ import Container from "react-bootstrap/Container";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ApiProvider from "./contexts/ApiProvider";
 import FlashProvider from "./contexts/FlashProvider";
-import UserProvider from "./contexts/UserProvider";
+import ProfileProvider from "./contexts/ProfileProvider";
 import PrivateRoute from "./components/common/PrivateRoute";
 import PublicRoute from "./components/common/PublicRoute";
-import UserProfilePage from "./components/Pages/UserProfile/UserProfilePage";
-import UserBuddiesPage from "./components/Pages/UserBuddies/UserBuddiesPage";
-import UserMatchingPage from "./components/Pages/UserMatching/UserMatchingPage";
-import UserChatPage from "./components/Pages/UserChat/UserChatPage";
+import ProfilePage from "./components/Pages/Profile/ProfilePage";
+import UserBuddiesPage from "./components/Pages/Buddies/UserBuddiesPage";
+import UserMatchingPage from "./components/Pages/Matching/UserMatchingPage";
+import UserChatPage from "./components/Pages/Chat/UserChatPage";
 import Navbar from "./components/Navbar/Navbar";
 import SignInPage from "./components/Pages/SignIn/SignInPage";
 import SignUp from "./components/Pages/SignUp/SignUpPage";
@@ -19,7 +19,7 @@ export default function App() {
       <BrowserRouter>
         <FlashProvider>
           <ApiProvider>
-            <UserProvider>
+            <ProfileProvider>
               <Navbar />
               <Routes>
                 <Route
@@ -43,8 +43,8 @@ export default function App() {
                   element={
                     <PrivateRoute>
                       <Routes>
-                        <Route path="*" element={<Navigate to="/UserProfilePage" />} />
-                        <Route path="/UserProfilePage" element={<UserProfilePage />} />
+                        <Route path="*" element={<Navigate to="/ProfilePage" />} />
+                        <Route path="/ProfilePage" element={<ProfilePage />} />
                         <Route path="/UserMatchingPage" element={<UserMatchingPage />} />
                         <Route path="/UserBuddiesPage" element={<UserBuddiesPage />} />
                         <Route path="/UserChatPage/:conversationId" element={<UserChatPage />} />
@@ -53,7 +53,7 @@ export default function App() {
                   }
                 />
               </Routes>
-            </UserProvider>
+            </ProfileProvider>
           </ApiProvider>
         </FlashProvider>
       </BrowserRouter>

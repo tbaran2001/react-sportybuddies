@@ -1,7 +1,7 @@
 import React from 'react';
 import CardMedia from '@mui/material/CardMedia';
 
-export default function UserCardMedia({ image }) {
+export default function ProfileCardMedia({ image }) {
     return (
         <CardMedia
             component="img"
