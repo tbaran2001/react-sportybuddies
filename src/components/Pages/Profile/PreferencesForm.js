@@ -3,7 +3,7 @@ import { Box, Button } from '@mui/material';
 import AgeRangeSlider from './AgeRangeSlider';
 import DistanceSlider from './DistanceSlider';
 import GenderSelect from './GenderSelect';
-import { useUser } from '../../../contexts/ProfileProvider';
+import { useUser } from '../../../contexts/UserProvider';
 
 export default function PreferencesForm() {
     const { user, updatePreferences } = useUser();

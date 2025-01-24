@@ -20,29 +20,77 @@ export const initializeConnection = (onMessageReceived) => {
     return connection;
 };
 
-export const CreateConversation = async (api, userId) => {
-    const response = await api.post(`/conversations`, {participantId: userId});
+// Fetches messages for a specific buddy
+export const fetchMessages = async (api, buddyId) => {
+    try {
+        const response = await api.get(`/messages/${buddyId}`);
+        return response.ok ? response.body : null;
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+        return null;
+    }
+};
 
-    return response.ok ? response.body : null;
+// Sends a message to a specific buddy
+export const sendMessage = async (api, buddyId, content) => {
+    try {
+        const response = await api.post(`/messages/${buddyId}`, {content});
+        if (!response.ok) {
+            toast.error("Message not sent");
+        }
+    } catch (error) {
+        console.error("Error sending message:", error);
+        toast.error("Message not sent");
+    }
+};
+
+export const CreateConversation = async (api, userId) => {
+    try {
+        const response = await api.post(`/conversations`, {participantId: userId});
+        return response.ok ? response.body : null;
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+        return null;
+    }
 }
 
 export const GetConversation = async (api, conversationId) => {
-    const response = await api.get(`/conversations/${conversationId}`);
-    return response.ok ? response.body : null;
+    try {
+        const response = await api.get(`/conversations/${conversationId}`);
+        return response.ok ? response.body : null;
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+        return null;
+    }
 }
 
 export const GetConversationMessages = async (api, conversationId) => {
-    const response = await api.get(`/conversations/${conversationId}/messages`);
-    return response.ok ? response.body : null;
+    try {
+        const response = await api.get(`/conversations/${conversationId}/messages`);
+        return response.ok ? response.body : null;
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+        return null;
+    }
 }
 
 export const SendMessageToConversation = async (api, conversationId, content) => {
-    const response = await api.post(`/conversations/${conversationId}/messages`, {content});
-    return response.ok ? response.body : null;
+    try {
+        const response = await api.post(`/conversations/${conversationId}/messages`, {content});
+        return response.ok ? response.body : null;
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+        return null;
+    }
 }
 
 
 export const GetConversationsWithLastMessage = async (api) => {
-    const response = await api.get(`/conversations/LastMessages`);
-    return response.ok ? response.body : null;
+    try {
+        const response = await api.get(`/conversations/LastMessages`);
+        return response.ok ? response.body : null;
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+        return null;
+    }
 }

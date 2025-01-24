@@ -1,28 +1,28 @@
 import React, {createContext, useContext, useEffect, useState, useCallback} from 'react';
 import {useApi} from "./ApiProvider";
-import {addUserSport, removeUserSport} from "../api/sports";
-import {useUser} from "./ProfileProvider";
+import {addUserSport, getCurrentUserSports, removeUserSport} from "../api/sports";
+import {useUser} from "./UserProvider";
 
 const UserSportsContext = createContext(null);
 
-export const useUserSports = () => {
+export const useProfileSports = () => {
     return useContext(UserSportsContext);
 };
 
 export const ProfileSportsProvider = ({children}) => {
     const api = useApi();
     const {user} = useUser();
-    const [userSports, setUserSports] = useState(user.sports || []);
+    const [profileSports, setProfileSports] = useState(user.sports || []);
 
     useEffect(() => {
-        setUserSports(user.sports || []);
+        setProfileSports(user.sports || []);
     }, [user.sports]);
 
     const addSport = useCallback(
         async (sport) => {
             const success = await addUserSport(api, sport.id);
             if (success) {
-                setUserSports((prev) => [...prev, sport]);
+                setProfileSports((prev) => [...prev, sport]);
             }
         },
         [api]
@@ -32,14 +32,14 @@ export const ProfileSportsProvider = ({children}) => {
         async (sportId) => {
             const success = await removeUserSport(api, sportId);
             if (success) {
-                setUserSports((prev) => prev.filter((s) => s.id !== sportId));
+                setProfileSports((prev) => prev.filter((s) => s.id !== sportId));
             }
         },
         [api]
     );
 
     return (
-        <UserSportsContext.Provider value={{userSports, addSport, removeSport}}>
+        <UserSportsContext.Provider value={{userSports: profileSports, addSport, removeSport}}>
             {children}
         </UserSportsContext.Provider>
     );

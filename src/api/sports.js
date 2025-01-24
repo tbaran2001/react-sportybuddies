@@ -1,6 +1,6 @@
 export const getAllSports = async (api) => {
     const response = await api.get("/sports");
-    return response.ok ? response.body : null;
+    return response.ok ? response.body.sports : null;
 };
 
 export const getCurrentUserSports = async (api) => {

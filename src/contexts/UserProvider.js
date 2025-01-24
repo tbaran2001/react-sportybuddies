@@ -4,26 +4,26 @@ import {getCurrentProfile, loginUser, logoutUser, updateProfilePreferences} from
 
 const UserContext = createContext();
 
-export default function ProfileProvider({children}) {
-    const [profile, setProfile] = useState();
+export default function UserProvider({children}) {
+    const [user, setUser] = useState();
     const api = useApi();
 
     useEffect(() => {
         (async () => {
             const currentProfile = await getCurrentProfile(api);
-            setProfile(currentProfile);
+            setUser(currentProfile);
         })();
     }, [api]);
 
     const login = async (email, password) => {
-        const profile = await loginUser(api, email, password);
-        setProfile(profile);
-        return profile;
+        const user = await loginUser(api, email, password);
+        setUser(user);
+        return user;
     };
 
     const logout = async () => {
         await logoutUser(api);
-        setProfile(null);
+        setUser(null);
     };
 
     const updatePreferences = async (minAge, maxAge, maxDistance, gender) => {
@@ -31,7 +31,7 @@ export default function ProfileProvider({children}) {
     }
 
     return (
-        <UserContext.Provider value={{profile, setProfile, login, logout, updatePreferences}}>
+        <UserContext.Provider value={{user, setUser, login, logout, updatePreferences}}>
             {children}
         </UserContext.Provider>
     );

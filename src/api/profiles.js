@@ -1,7 +1,7 @@
 export const getCurrentProfile = async (api) => {
     if (api.isAuthenticated()) {
-        const response = await api.get("/profiles");
-        return response.ok ? response.body : null;
+        const response = await api.get("/profiles/me");
+        return response.ok ? response.body.profile : null;
     }
     return null;
 };

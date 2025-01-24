@@ -3,7 +3,7 @@ import {Stack} from "@mui/material";
 import ProfileCard from "../../ProfileCard/ProfileCard";
 import Preferences from "./Preferences";
 import Body from "../../Body";
-import {useUser} from "../../../contexts/ProfileProvider";
+import {useUser} from "../../../contexts/UserProvider";
 import {ProfileSportsProvider} from "../../../contexts/ProfileSportsProvider";
 
 

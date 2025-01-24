@@ -26,7 +26,7 @@ import {
     FaSignOutAlt,
     FaUserCircle
 } from "react-icons/fa";
-import {useUser} from "../../contexts/ProfileProvider";
+import {useUser} from "../../contexts/UserProvider";
 import {useNavigate} from "react-router-dom";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({

@@ -17,7 +17,7 @@ const StyledPaper = styled(Paper)(({theme}) => ({
 }));
 
 
-export default function UserBuddiesPage() {
+export default function BuddiesPage() {
     const theme = useTheme();
     const api = useApi();
     const [buddies, setBuddies] = useState([]);

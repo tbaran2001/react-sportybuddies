@@ -17,7 +17,7 @@ const SwipeBox = styled(Box)(({theme}) => ({
     alignItems: "center",
 }));
 
-export default function UserMatchingPage() {
+export default function MatchingPage() {
     const api = useApi();
     const [match, setMatch] = useState();
 

@@ -8,8 +8,8 @@ import { NavLink } from 'react-router-dom';
 export default function Sidebar() {
     const navItems = [
         { path: "/ProfilePage", label: "Profile", icon: <AccountBoxIcon /> },
-        { path: "/UserMatchingPage", label: "Matching", icon: <JoinInnerIcon /> },
-        { path: "/UserBuddiesPage", label: "Buddies", icon: <PeopleIcon /> },
+        { path: "/MatchingPage", label: "Matching", icon: <JoinInnerIcon /> },
+        { path: "/BuddiesPage", label: "Buddies", icon: <PeopleIcon /> },
     ];
 
     return (

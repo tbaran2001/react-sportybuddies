@@ -12,7 +12,7 @@ import {
     GetConversationMessages, initializeConnection,
     SendMessageToConversation
 } from "../../../api/chat";
-import {useUser} from "../../../contexts/ProfileProvider";
+import {useUser} from "../../../contexts/UserProvider";
 import ChatHeader from "./ChatHeader";
 import MessageList from "./MessageList";
 import InputBox from "./InputBox";
@@ -24,7 +24,7 @@ const StyledPaper = styled(Paper)(({theme}) => ({
     overflow: "hidden",
 }));
 
-export default function UserChatPage() {
+export default function ChatPage() {
     const [message, setMessage] = useState("");
     const [conversation, setConversation] = useState(null);
     const [conversationMessages, setConversationMessages] = useState([]);
