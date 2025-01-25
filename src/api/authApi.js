@@ -2,7 +2,7 @@ import {handleApiResponse} from "./apiUtils";
 
 export const registerUser = async (api, email, password, name, dateOfBirth, gender) => {
     const response = await api.post("/register", {email, password, name, dateOfBirth, gender});
-    return handleApiResponse(response);
+    return response;
 };
 
 export const loginUser = async (api, email, password) => {

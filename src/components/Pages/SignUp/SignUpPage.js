@@ -96,7 +96,7 @@ const SignUp = () => {
 
         flash("You have successfully registered!", "success");
         await login(email, password);
-        navigate("/userprofilepage");
+        navigate("/ProfilePage");
 
     };
 
