@@ -1,6 +1,7 @@
 import {createContext, useContext, useState, useEffect} from "react";
 import {useApi} from "./ApiProvider";
-import {getCurrentProfile, loginUser, logoutUser, updateProfilePreferences} from "../api/profiles";
+import {getCurrentProfile,updateProfilePreferences} from "../api/profileApi";
+import {loginUser, logoutUser} from "../api/authApi";
 
 const UserContext = createContext();
 

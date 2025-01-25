@@ -13,7 +13,7 @@ import {
 import {styled} from "@mui/system";
 import {FaEye, FaEyeSlash, FaUserAlt, FaEnvelope, FaLock, FaCalendarAlt} from "react-icons/fa";
 import {Link, useNavigate} from "react-router-dom";
-import {registerUser} from "../../../api/auth";
+import {registerUser} from "../../../api/authApi";
 import {useApi} from "../../../contexts/ApiProvider";
 import {useFlash} from "../../../contexts/FlashProvider";
 import {useUser} from "../../../contexts/UserProvider";

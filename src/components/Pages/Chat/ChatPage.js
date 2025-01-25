@@ -11,7 +11,7 @@ import {
     GetConversation,
     GetConversationMessages, initializeConnection,
     SendMessageToConversation
-} from "../../../api/chat";
+} from "../../../api/conversationApi";
 import {useUser} from "../../../contexts/UserProvider";
 import ChatHeader from "./ChatHeader";
 import MessageList from "./MessageList";

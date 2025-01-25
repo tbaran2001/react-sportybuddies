@@ -3,7 +3,7 @@ import {Avatar, Button, ListItem, ListItemAvatar, ListItemText, Typography, useT
 import {styled} from "@mui/system";
 import {IoMdSend} from "react-icons/io";
 import {Link, useNavigate} from "react-router-dom";
-import {CreateConversation} from "../../../api/chat";
+import {CreateConversation} from "../../../api/conversationApi";
 import {useApi} from "../../../contexts/ApiProvider";
 
 

@@ -1,16 +1,24 @@
+import {handleApiResponse} from "./apiUtils";
+
 export const getRandomMatch = async (api) => {
     const response = await api.get("/matches/get-random-match");
-    return response.ok ? response.body : null;
+    return handleApiResponse(response);
 };
 
 export const swipeMatch = async (api, matchId, direction) => {
-    const response = await api.put("/matches/" + matchId, {
-        swipe: direction === "right" ? 1 : 2,
+    const swipeValue = direction === "right" ? 1 : 2;
+    const swipePayload = {
+        swipe: swipeValue,
         swipeDateTime: new Date().toISOString(),
-    });
+    };
 
-    if (response.ok) {
-        const response = await api.get("/matches/get-random-match");
-        return response.ok ? response.body : null;
+    const swipeResponse = await api.put(`/matches/${matchId}`, swipePayload);
+
+    if (swipeResponse.ok) {
+        const nextMatchResponse = await api.get("/matches/get-random-match");
+        return handleApiResponse(nextMatchResponse);
     }
+
+    console.error("Error swiping match:", swipeResponse.statusText);
+    return null;
 }
