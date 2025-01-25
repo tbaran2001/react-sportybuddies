@@ -51,7 +51,7 @@ export default function ChatPage() {
             try {
                 const conversationData = await GetConversation(api, conversationId);
                 if (!conversationData) {
-                    navigate("/UserProfilePage", { replace: true });
+                    navigate("/ProfilePage", { replace: true });
                     return;
                 }
                 setConversation(conversationData);
@@ -59,7 +59,7 @@ export default function ChatPage() {
                 setConversationMessages(messages);
             } catch (error) {
                 console.error("Error fetching conversation or messages:", error);
-                navigate("/UserProfilePage", { replace: true }); // Navigate on error
+                navigate("/ProfilePage", { replace: true }); // Navigate on error
             }
         })();
     }, [api, conversationId, navigate]);
@@ -85,9 +85,9 @@ export default function ChatPage() {
         if (!conversation || !conversation.participants) return "--";
 
         const otherParticipant = conversation.participants.find(
-            (participant) => participant.user.id !== user.id
+            (participant) => participant.profile.id !== user.id
         );
-        return otherParticipant?.user?.name || "--";
+        return otherParticipant?.profile?.name || "--";
     };
 
     return (

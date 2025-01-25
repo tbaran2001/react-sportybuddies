@@ -30,10 +30,10 @@ export const BuddyItem = memo(({buddy}) => {
 
     const handleButtonClick = async () => {
         try {
-            let conversationId = buddy.conversation?.id;
+            let conversationId = buddy.conversationId;
 
             if (!conversationId) {
-                const newConversation = await CreateConversation(api,buddy.matchedUser.id);
+                const newConversation = await CreateConversation(api,buddy.matchedProfile.id);
                 if(!newConversation) {
                     console.error("Failed to create conversation");
                     window.location.reload();
@@ -44,11 +44,11 @@ export const BuddyItem = memo(({buddy}) => {
 
             if (!conversationId) {
                 console.error("Invalid conversation ID");
-                navigate("/UserProfilePage");
+                navigate("/ProfilePage");
                 return;
             }
 
-            navigate(`/UserChatPage/${conversationId}`);
+            navigate(`/ChatPage/${conversationId}`);
         } catch (error) {
             console.error("Failed to create or navigate to conversation:", error);
         }
@@ -59,7 +59,7 @@ export const BuddyItem = memo(({buddy}) => {
             <ListItemAvatar
                 alignItems="center"
                 role="listitem"
-                aria-label={`Buddy ${buddy.matchedUser.name}`}
+                aria-label={`Buddy ${buddy.matchedProfile.name}`}
                 sx={{
                     borderRadius: theme.spacing(1),
                     transition: "background-color 0.2s ease",
@@ -67,19 +67,19 @@ export const BuddyItem = memo(({buddy}) => {
                 }}
             >
                 <Avatar
-                    alt={buddy.matchedUser.name}
+                    alt={buddy.matchedProfile.name}
                     sx={{width: 60, height: 60}}
                 />
             </ListItemAvatar>
             <ListItemText
                 primary={
                     <Typography variant="h6" sx={{fontWeight: "medium"}}>
-                        {buddy.matchedUser.name}
+                        {buddy.matchedProfile.name}
                     </Typography>
                 }
                 secondary={
                     <Typography variant="body2" color="text.secondary">
-                        {buddy.matchedUser.description}
+                        {buddy.matchedProfile.description}
                     </Typography>
                 }
                 sx={{ml: 2}}
@@ -89,7 +89,7 @@ export const BuddyItem = memo(({buddy}) => {
                 color="primary"
                 startIcon={<IoMdSend />}
                 onClick={handleButtonClick}
-                aria-label={`Start or go to conversation with ${buddy.matchedUser.name}`}
+                aria-label={`Start or go to conversation with ${buddy.matchedProfile.name}`}
             >
                 Start Chat
             </StyledButton>

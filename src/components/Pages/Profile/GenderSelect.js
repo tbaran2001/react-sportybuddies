@@ -27,7 +27,7 @@ export default function GenderSelect({gender, onChange}) {
                     onChange={handleChange}
                     label="Gender"
                 >
-                    <MenuItem value={0}>All</MenuItem>
+                    <MenuItem value={3}>All</MenuItem>
                     <MenuItem value={1}>Male</MenuItem>
                     <MenuItem value={2}>Female</MenuItem>
                 </Select>

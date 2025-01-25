@@ -2,7 +2,7 @@ import {handleApiResponse} from "./apiUtils";
 
 export const getRandomMatch = async (api) => {
     const response = await api.get("/matches/get-random-match");
-    return handleApiResponse(response);
+    return handleApiResponse(response)?.match;
 };
 
 export const swipeMatch = async (api, matchId, direction) => {
@@ -15,8 +15,7 @@ export const swipeMatch = async (api, matchId, direction) => {
     const swipeResponse = await api.put(`/matches/${matchId}`, swipePayload);
 
     if (swipeResponse.ok) {
-        const nextMatchResponse = await api.get("/matches/get-random-match");
-        return handleApiResponse(nextMatchResponse);
+        await getRandomMatch(api);
     }
 
     console.error("Error swiping match:", swipeResponse.statusText);

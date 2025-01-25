@@ -8,7 +8,7 @@ import {
 import {styled} from "@mui/system";
 import Body from "../../Body";
 import {useApi} from "../../../contexts/ApiProvider";
-import {getBuddies} from "../../../api/buddies";
+import {getBuddies} from "../../../api/buddiesApi";
 import {BuddyItem} from "./BuddyItem";
 
 

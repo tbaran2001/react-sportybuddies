@@ -1,10 +1,9 @@
 import React from 'react';
 import {Stack} from "@mui/material";
-import ProfileCard from "../../ProfileCard/ProfileCard";
-import Preferences from "./Preferences";
 import Body from "../../Body";
 import {useUser} from "../../../contexts/UserProvider";
 import {ProfileSportsProvider} from "../../../contexts/ProfileSportsProvider";
+import Profile from "../../ProfileCard/Profile";
 
 
 export default function ProfilePage() {
@@ -14,8 +13,7 @@ export default function ProfilePage() {
         <Body sidebar>
             <Stack flex={4} direction="row" spacing={2} justifyContent={"space-between"}>
                 <ProfileSportsProvider>
-                    <ProfileCard user={user}/>
-                    <Preferences/>
+                    <Profile profile={user}/>
                 </ProfileSportsProvider>
             </Stack>
         </Body>

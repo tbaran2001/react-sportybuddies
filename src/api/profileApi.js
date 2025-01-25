@@ -13,8 +13,8 @@ export const getUser = async (api, userId) => {
     return handleApiResponse(response);
 };
 
-export const updateProfilePreferences = async (api, minAge, maxAge, maxDistance, gender) => {
+export const updateProfilePreferences = async (api, minAge, maxAge, maxDistance, preferredGender) => {
     const response = await api.put("/profiles/preferences",
-        {minAge, maxAge, maxDistance, gender});
+        {minAge, maxAge, maxDistance, preferredGender});
     return response.ok;
 };

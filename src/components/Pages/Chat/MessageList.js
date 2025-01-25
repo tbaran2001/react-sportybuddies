@@ -5,16 +5,22 @@ import {
     styled
 } from "@mui/material";
 
-const MessageContainer = styled(Box)(({theme, sent}) => ({
+const MessageContainer = styled(Box, {
+    shouldForwardProp: (prop) => prop !== "sent",
+})(({ theme, sent }) => ({
     display: "flex",
     justifyContent: sent ? "flex-end" : "flex-start",
     marginBottom: theme.spacing(2),
     padding: theme.spacing(0, 2),
 }));
 
-const Message = styled(Paper)(({theme, sent}) => ({
+const Message = styled(Paper, {
+    shouldForwardProp: (prop) => prop !== "sent",
+})(({ theme, sent }) => ({
     padding: theme.spacing(1, 2),
     maxWidth: "70%",
+    backgroundColor: sent ? theme.palette.primary.light : theme.palette.grey[200],
+    color: sent ? theme.palette.primary.contrastText : theme.palette.text.primary,
 }));
 
 const MessageList = ({messages, userId, endRef}) => (
@@ -27,7 +33,7 @@ const MessageList = ({messages, userId, endRef}) => (
                         variant="caption"
                         sx={{display: "block", mt: 0.5, opacity: 0.7}}
                     >
-                        {msg.createdAt}
+                        {msg.createdOn}
                     </Typography>
                 </Message>
             </MessageContainer>

@@ -26,15 +26,15 @@ export const CreateConversation = async (api, userId) => {
 
 export const GetConversation = async (api, conversationId) => {
     const response = await api.get(`/conversations/${conversationId}`);
-    return handleApiResponse(response);
+    return handleApiResponse(response)?.conversation;
 }
 
 export const GetConversationMessages = async (api, conversationId) => {
     const response = await api.get(`/conversations/${conversationId}/messages`);
-    return handleApiResponse(response);
+    return handleApiResponse(response)?.messages;
 }
 
 export const SendMessageToConversation = async (api, conversationId, content) => {
     const response = await api.post(`/conversations/${conversationId}/messages`, {content});
-    return handleApiResponse(response);
+    return handleApiResponse(response)?.message;
 }

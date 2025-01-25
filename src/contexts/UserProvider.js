@@ -27,8 +27,8 @@ export default function UserProvider({children}) {
         setUser(null);
     };
 
-    const updatePreferences = async (minAge, maxAge, maxDistance, gender) => {
-        await updateProfilePreferences(api, minAge, maxAge, maxDistance, gender);
+    const updatePreferences = async (minAge, maxAge, maxDistance, preferredGender) => {
+        await updateProfilePreferences(api, minAge, maxAge, maxDistance, preferredGender);
     }
 
     return (

@@ -1,16 +1,14 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Box, CardContent} from '@mui/material';
 import {sportsIcons} from "../Pages/Profile/sportsIcons";
 import {styled} from "@mui/system";
 import Tooltip from "@mui/material/Tooltip";
-import {useProfileSports} from "../../contexts/ProfileSportsProvider";
 
 const IconBox = styled(Box)(({theme}) => ({
     fontSize: 40,
 }));
 
-export default function ProfileCardContent() {
-    const {profileSports} = useProfileSports();
+export default function ProfileCardContent({profileSports}) {
 
     return (
         <CardContent>

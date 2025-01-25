@@ -7,7 +7,7 @@ import {styled} from "@mui/material/styles";
 import Body from "../../Body";
 import ProfileCard from "../../ProfileCard/ProfileCard";
 import {useApi} from "../../../contexts/ApiProvider";
-import {getRandomMatch, swipeMatch} from "../../../api/matching";
+import {getRandomMatch, swipeMatch} from "../../../api/matchingApi";
 import Spinner from "react-bootstrap/Spinner";
 
 const SwipeBox = styled(Box)(({theme}) => ({
@@ -44,7 +44,7 @@ export default function MatchingPage() {
                             <ThumbDownOutlinedIcon fontSize="large"/>
                         </IconButton>
                     </SwipeBox>
-                    <ProfileCard user={match.matchedUser} userSports={match.matchedUser.sports}/>
+                    <ProfileCard profile={match.matchedProfile} profileSports={match.matchedProfile.sports}/>
                     <SwipeBox>
                         <IconButton onClick={() => swipe('right')} aria-label="Swipe Right" size="large">
                             <FavoriteBorderOutlinedIcon fontSize="large"/>

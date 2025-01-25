@@ -3,7 +3,7 @@ import { Box, IconButton, Typography } from '@mui/material';
 import CardHeader from '@mui/material/CardHeader';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-export default function ProfileCardHeader({ user }) {
+export default function ProfileCardHeader({ profile }) {
     return (
         <CardHeader
             action={
@@ -14,7 +14,7 @@ export default function ProfileCardHeader({ user }) {
             sx={{ textAlign: 'center' }}
             title={
                 <Typography variant="h6" component="div">
-                    {user.name}
+                    {profile.name}
                 </Typography>
             }
             subheader={
@@ -23,7 +23,7 @@ export default function ProfileCardHeader({ user }) {
                         15 km
                     </Typography>
                     <Typography variant="subtitle2" color="text.secondary">
-                        {user.dateOfBirth}
+                        {profile.dateOfBirth}
                     </Typography>
                 </Box>
             }

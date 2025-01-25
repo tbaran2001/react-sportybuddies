@@ -7,7 +7,7 @@ import { useUser } from '../../../contexts/UserProvider';
 
 export default function PreferencesForm() {
     const { user, updatePreferences } = useUser();
-    const { minAge = 18, maxAge = 100, maxDistance = 50, gender = 0 } = user.preferences || {};
+    const { minAge = 18, maxAge = 100, maxDistance = 50, gender = 3 } = user.preferences || {};
 
     const [ageRange, setAgeRange] = useState([minAge, maxAge]);
     const [distance, setDistance] = useState(maxDistance);
