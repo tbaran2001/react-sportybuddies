@@ -44,7 +44,7 @@ export default function MatchingPage() {
                             <ThumbDownOutlinedIcon fontSize="large"/>
                         </IconButton>
                     </SwipeBox>
-                    <ProfileCard profile={match.matchedProfile} profileSports={match.matchedProfile.sports}/>
+                    <ProfileCard profile={match.matchedProfile} profileSports={match.matchedProfile.sports} distance={match.distance}/>
                     <SwipeBox>
                         <IconButton onClick={() => swipe(1)} aria-label="Swipe Right" size="large">
                             <FavoriteBorderOutlinedIcon fontSize="large"/>

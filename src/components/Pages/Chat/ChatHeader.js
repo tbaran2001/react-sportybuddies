@@ -1,7 +1,7 @@
 import {Avatar, Box, Typography} from "@mui/material";
 import {BsCircleFill} from "react-icons/bs";
 
-const ChatHeader = ({participantName}) => (
+const ChatHeader = ({participantName,mainPhotoUrl}) => (
     <Box
         sx={{
             p: 2,
@@ -11,8 +11,15 @@ const ChatHeader = ({participantName}) => (
             alignItems: "center",
         }}
     >
-        <Avatar
-            alt="Current chat"
+        <img
+            src={mainPhotoUrl} // Dynamic photo URL
+            alt={participantName} // Alt text for accessibility
+            style={{
+                width: 48, // Adjust size as needed
+                height: 48,
+                borderRadius: "50%", // Makes the image round like an avatar
+                objectFit: "cover",
+            }}
         />
         <Box sx={{ml: 2}}>
             <Typography variant="subtitle1" fontWeight="medium">

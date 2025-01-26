@@ -21,15 +21,24 @@ export default function ProfilePage() {
             const data = await response.json();
 
             if (data.status === "OK") {
-                const address = data.results[0]?.formatted_address;
-                console.log("Address", address);
-                return address;
+                const addressComponents = data.results[0]?.address_components;
+                if (addressComponents) {
+                    const city = addressComponents.find((component) =>
+                        component.types.includes("locality")
+                    )?.long_name;
+
+                    console.log("City Name:", city);
+                    return city;
+                } else {
+                    console.error("No address components found.");
+                    return null;
+                }
             } else {
                 console.error("Geolocation Error:", data.status);
                 return null;
             }
         } catch (error) {
-            console.error("Cant connect to API:", error.message);
+            console.error("Cannot connect to API:", error.message);
             return null;
         }
     };

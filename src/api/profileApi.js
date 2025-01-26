@@ -23,3 +23,11 @@ export const updateProfileLocation = async (api, latitude, longitude, address) =
     const response = await api.put("/profiles/location", {latitude, longitude, address});
     return response.ok;
 }
+
+export const uploadProfilePhoto = async (api, file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await api.post("/profiles/upload-profile-photo", formData);
+    return handleApiResponse(response);
+}

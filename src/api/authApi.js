@@ -1,4 +1,4 @@
-import {handleApiResponse} from "./apiUtils";
+import {getCurrentProfile} from "./profileApi";
 
 export const registerUser = async (api, email, password, name, dateOfBirth, gender) => {
     const response = await api.post("/register", {email, password, name, dateOfBirth, gender});
@@ -8,8 +8,7 @@ export const registerUser = async (api, email, password, name, dateOfBirth, gend
 export const loginUser = async (api, email, password) => {
     const loginResult = await api.login(email, password);
     if (loginResult.ok) {
-        const profileResponse = await api.get("/profiles/me");
-        return handleApiResponse(profileResponse);
+        return await getCurrentProfile(api);
     }
     return null;
 };

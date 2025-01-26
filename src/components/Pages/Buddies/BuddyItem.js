@@ -66,9 +66,10 @@ export const BuddyItem = memo(({buddy}) => {
                     "&:hover": {backgroundColor: "rgba(0, 0, 0, 0.04)"},
                 }}
             >
-                <Avatar
+                <img
+                    src={buddy.matchedProfile.mainPhotoUrl} // Path to the photo
                     alt={buddy.matchedProfile.name}
-                    sx={{width: 60, height: 60}}
+                    style={{width: 60, height: 60, borderRadius: theme.spacing(1), objectFit: "cover"}}
                 />
             </ListItemAvatar>
             <ListItemText
@@ -91,7 +92,7 @@ export const BuddyItem = memo(({buddy}) => {
                 onClick={handleButtonClick}
                 aria-label={`Start or go to conversation with ${buddy.matchedProfile.name}`}
             >
-                Start Chat
+                Chat
             </StyledButton>
         </StyledListItem>
     );

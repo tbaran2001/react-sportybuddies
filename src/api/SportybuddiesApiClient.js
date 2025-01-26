@@ -21,13 +21,14 @@ export default class SportybuddiesApiClient {
 
     let response;
     try {
+      const isFormData = options.body instanceof FormData;
       response = await fetch(this.base_url + options.url + query, {
         method: options.method,
         headers: {
-          "Content-Type": "application/json",
+          ...(isFormData ? {} : { "Content-Type": "application/json" }),
           ...options.headers,
         },
-        body: options.body ? JSON.stringify(options.body) : null,
+        body: options.body instanceof FormData ? options.body : options.body ? JSON.stringify(options.body) : null,
         credentials: "include",
       });
     } catch (error) {

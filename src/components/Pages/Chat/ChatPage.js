@@ -51,7 +51,7 @@ export default function ChatPage() {
             try {
                 const conversationData = await GetConversation(api, conversationId);
                 if (!conversationData) {
-                    navigate("/ProfilePage", { replace: true });
+                    navigate("/ProfilePage", {replace: true});
                     return;
                 }
                 setConversation(conversationData);
@@ -59,7 +59,7 @@ export default function ChatPage() {
                 setConversationMessages(messages);
             } catch (error) {
                 console.error("Error fetching conversation or messages:", error);
-                navigate("/ProfilePage", { replace: true }); // Navigate on error
+                navigate("/ProfilePage", {replace: true}); // Navigate on error
             }
         })();
     }, [api, conversationId, navigate]);
@@ -81,13 +81,13 @@ export default function ChatPage() {
         })();
     };
 
-    const getOtherParticipantName = () => {
+    const getOtherParticipant = () => {
         if (!conversation || !conversation.participants) return "--";
 
         const otherParticipant = conversation.participants.find(
             (participant) => participant.profile.id !== user.id
         );
-        return otherParticipant?.profile?.name || "--";
+        return otherParticipant || null;
     };
 
     return (
@@ -96,7 +96,8 @@ export default function ChatPage() {
                 <StyledPaper elevation={10}>
                     <Box sx={{flex: 1, display: "flex", flexDirection: "column"}}>
                         <ChatHeader
-                            participantName={getOtherParticipantName()}
+                            participantName={getOtherParticipant()?.profile?.name || "Unknown Participant"}
+                            mainPhotoUrl={getOtherParticipant()?.profile?.mainPhotoUrl || "/default-photo.jpg"}
                         />
                         <MessageList
                             messages={conversationMessages}
