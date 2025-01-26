@@ -19,7 +19,7 @@ export const updateProfilePreferences = async (api, minAge, maxAge, maxDistance,
     return response.ok;
 };
 
-export const updateProfileLocation = async (api, latitude, longitude) => {
-    const response = await api.put("/profiles/location", {latitude, longitude});
+export const updateProfileLocation = async (api, latitude, longitude, address) => {
+    const response = await api.put("/profiles/location", {latitude, longitude, address});
     return response.ok;
 }

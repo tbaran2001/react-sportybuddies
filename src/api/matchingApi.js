@@ -6,18 +6,13 @@ export const getRandomMatch = async (api) => {
 };
 
 export const swipeMatch = async (api, matchId, direction) => {
-    const swipeValue = direction === "right" ? 1 : 2;
+    const swipeValue = direction
     const swipePayload = {
         swipe: swipeValue,
         swipeDateTime: new Date().toISOString(),
     };
 
-    const swipeResponse = await api.put(`/matches/${matchId}`, swipePayload);
+    await api.put(`/matches/${matchId}`, swipePayload);
 
-    if (swipeResponse.ok) {
-        await getRandomMatch(api);
-    }
-
-    console.error("Error swiping match:", swipeResponse.statusText);
-    return null;
+    return await getRandomMatch(api);
 }

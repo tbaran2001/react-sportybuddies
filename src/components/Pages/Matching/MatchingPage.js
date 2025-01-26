@@ -40,13 +40,13 @@ export default function MatchingPage() {
             ) : (
                 <Stack flex={4} direction="row" spacing={2} justifyContent={"space-between"}>
                     <SwipeBox>
-                        <IconButton onClick={() => swipe('left')} aria-label="Swipe Left" size="large">
+                        <IconButton onClick={() => swipe(2)} aria-label="Swipe Left" size="large">
                             <ThumbDownOutlinedIcon fontSize="large"/>
                         </IconButton>
                     </SwipeBox>
                     <ProfileCard profile={match.matchedProfile} profileSports={match.matchedProfile.sports}/>
                     <SwipeBox>
-                        <IconButton onClick={() => swipe('right')} aria-label="Swipe Right" size="large">
+                        <IconButton onClick={() => swipe(1)} aria-label="Swipe Right" size="large">
                             <FavoriteBorderOutlinedIcon fontSize="large"/>
                         </IconButton>
                     </SwipeBox>

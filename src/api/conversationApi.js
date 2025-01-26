@@ -21,7 +21,7 @@ export const initializeConnection = (onMessageReceived) => {
 
 export const CreateConversation = async (api, userId) => {
     const response = await api.post("/conversations", {participantId: userId});
-    return handleApiResponse(response);
+    return handleApiResponse(response)?.conversation;
 }
 
 export const GetConversation = async (api, conversationId) => {
