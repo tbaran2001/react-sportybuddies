@@ -8,64 +8,51 @@ import {
     Menu,
     MenuItem,
     Box,
-    SwipeableDrawer,
-    List,
-    ListItem,
-    ListItemText,
-    ListItemIcon,
-    Avatar,
-    useMediaQuery,
-    useTheme
+    Avatar, ListItemIcon, Button,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import {
-    FaBars,
     FaEnvelope,
     FaBell,
     FaUser,
     FaSignOutAlt,
-    FaUserCircle
+    FaUserCircle,
 } from "react-icons/fa";
-import {useUser} from "../../contexts/UserProvider";
-import {useNavigate} from "react-router-dom";
+import { useUser } from "../../contexts/UserProvider";
+import {Link, useNavigate} from "react-router-dom";
+import {useApi} from "../../contexts/ApiProvider";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     backgroundColor: "#ffffff",
-    boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
 }));
 
 const LogoContainer = styled(Box)({
     display: "flex",
     alignItems: "center",
-    gap: "10px"
+    gap: "10px",
 });
 
 const Logo = styled("img")({
     height: "40px",
     width: "40px",
-    objectFit: "contain"
+    objectFit: "contain",
 });
 
 const IconContainer = styled(Box)({
     display: "flex",
     alignItems: "center",
-    gap: "16px"
+    gap: "16px",
 });
 
 const Navbar = () => {
-    const [mobileOpen, setMobileOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const { user, logout } = useUser();
     const navigate = useNavigate();
+    const api = useApi();
 
     const [messageCount] = useState(3);
     const [notificationCount] = useState(5);
-
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -76,7 +63,7 @@ const Navbar = () => {
     };
 
     const handleProfileClick = () => {
-        navigate("/profile");
+        navigate("/ProfilePage");
         handleClose();
     };
 
@@ -85,63 +72,30 @@ const Navbar = () => {
         handleClose();
     };
 
-    const drawer = (
-        <List>
-            <ListItem aria-label="Messages">
-                <ListItemIcon>
-                    <Badge badgeContent={messageCount} color="error">
-                        <FaEnvelope size={24} />
-                    </Badge>
-                </ListItemIcon>
-                <ListItemText primary="Messages" />
-            </ListItem>
-            <ListItem aria-label="Notifications">
-                <ListItemIcon>
-                    <Badge badgeContent={notificationCount} color="error">
-                        <FaBell size={24} />
-                    </Badge>
-                </ListItemIcon>
-                <ListItemText primary="Notifications" />
-            </ListItem>
-            <ListItem onClick={handleProfileMenuOpen} aria-label="Profile">
-                <ListItemIcon>
-                    <FaUser size={24} />
-                </ListItemIcon>
-                <ListItemText primary="Profile" />
-            </ListItem>
-        </List>
-    );
+    const handleSignIn = () => {
+        navigate("/login");
+    };
+
+    const handleSignUp = () => {
+        navigate("/register");
+    };
 
     return (
         <Box sx={{ flexGrow: 1 }}>
             <StyledAppBar position="static">
                 <Toolbar>
                     <LogoContainer sx={{ flexGrow: 1 }}>
-                        {isMobile && (
-                            <IconButton
-                                color="inherit"
-                                aria-label="open drawer"
-                                edge="start"
-                                onClick={handleDrawerToggle}
-                                sx={{ mr: 2, color: "#333" }}
-                            >
-                                <FaBars />
-                            </IconButton>
-                        )}
-                        <Logo
-                            src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead"
-                            alt="Company Logo"
-                        />
                         <Typography
                             variant="h6"
-                            component="div"
-                            sx={{ color: "#333", fontWeight: 600 }}
+                            component={Link}
+                            to="/"
+                            sx={{ textDecoration: "none", color: "#333", fontWeight: 600 }}
                         >
                             SportyBuddies
                         </Typography>
                     </LogoContainer>
 
-                    {!isMobile && (
+                    {api.isAuthenticated() ? (
                         <IconContainer>
                             <IconButton
                                 aria-label="Show messages"
@@ -171,18 +125,26 @@ const Navbar = () => {
                                 </Avatar>
                             </IconButton>
                         </IconContainer>
+                    ) : (
+                        <Box sx={{ display: "flex", gap: 2 }}>
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                onClick={handleSignIn}
+                            >
+                                Sign In
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={handleSignUp}
+                            >
+                                Sign Up
+                            </Button>
+                        </Box>
                     )}
                 </Toolbar>
             </StyledAppBar>
-
-            <SwipeableDrawer
-                anchor="left"
-                open={mobileOpen}
-                onClose={handleDrawerToggle}
-                onOpen={handleDrawerToggle}
-            >
-                {drawer}
-            </SwipeableDrawer>
 
             <Menu
                 anchorEl={anchorEl}
@@ -190,11 +152,11 @@ const Navbar = () => {
                 onClose={handleClose}
                 anchorOrigin={{
                     vertical: "bottom",
-                    horizontal: "right"
+                    horizontal: "right",
                 }}
                 transformOrigin={{
                     vertical: "top",
-                    horizontal: "right"
+                    horizontal: "right",
                 }}
             >
                 <MenuItem onClick={handleProfileClick}>

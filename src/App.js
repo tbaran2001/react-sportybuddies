@@ -1,5 +1,5 @@
 import Container from "react-bootstrap/Container";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import ApiProvider from "./contexts/ApiProvider";
 import FlashProvider from "./contexts/FlashProvider";
 import UserProvider from "./contexts/UserProvider";
@@ -12,51 +12,60 @@ import ChatPage from "./components/Pages/Chat/ChatPage";
 import Navbar from "./components/Navbar/Navbar";
 import SignInPage from "./components/Pages/SignIn/SignInPage";
 import SignUp from "./components/Pages/SignUp/SignUpPage";
+import LandingPage from "./components/Pages/Index/LandingPage";
 
 export default function App() {
-  return (
-    <Container fluid className="App">
-      <BrowserRouter>
-        <FlashProvider>
-          <ApiProvider>
-            <UserProvider>
-              <Navbar />
-              <Routes>
-                <Route
-                  path="/login"
-                  element={
-                    <PublicRoute>
-                      <SignInPage />
-                    </PublicRoute>
-                  }
-                />
-                <Route
-                  path="/register"
-                  element={
-                    <PublicRoute>
-                      <SignUp />
-                    </PublicRoute>
-                  }
-                />
-                <Route
-                  path="*"
-                  element={
-                    <PrivateRoute>
-                      <Routes>
-                        <Route path="*" element={<Navigate to="/ProfilePage" />} />
-                        <Route path="/ProfilePage" element={<ProfilePage />} />
-                        <Route path="/MatchingPage" element={<MatchingPage />} />
-                        <Route path="/BuddiesPage" element={<BuddiesPage />} />
-                        <Route path="/ChatPage/:conversationId" element={<ChatPage />} />
-                      </Routes>
-                    </PrivateRoute>
-                  }
-                />
-              </Routes>
-            </UserProvider>
-          </ApiProvider>
-        </FlashProvider>
-      </BrowserRouter>
-    </Container>
-  );
+    return (
+        <Container fluid className="App">
+            <BrowserRouter>
+                <FlashProvider>
+                    <ApiProvider>
+                        <UserProvider>
+                            <Navbar/>
+                            <Routes>
+                                <Route
+                                    path="/"
+                                    element={
+                                    <PublicRoute>
+                                        <LandingPage/>
+                                    </PublicRoute>
+                                }
+                                />
+                                <Route
+                                    path="/login"
+                                    element={
+                                        <PublicRoute>
+                                            <SignInPage/>
+                                        </PublicRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/register"
+                                    element={
+                                        <PublicRoute>
+                                            <SignUp/>
+                                        </PublicRoute>
+                                    }
+                                />
+                                <Route
+                                    path="*"
+                                    element={
+                                        <PrivateRoute>
+                                            <Routes>
+                                                <Route path="*" element={<Navigate to="/ProfilePage"/>}/>
+                                                <Route path="/ProfilePage" element={<ProfilePage/>}/>
+                                                <Route path="/MatchingPage" element={<MatchingPage/>}/>
+                                                <Route path="/BuddiesPage" element={<BuddiesPage/>}/>
+                                                <Route path="/ChatPage/:conversationId" element={<ChatPage/>}/>
+                                            </Routes>
+                                        </PrivateRoute>
+                                    }
+                                />
+                            </Routes>
+                        </UserProvider>
+                    </ApiProvider>
+                </FlashProvider>
+            </BrowserRouter>
+        </Container>
+    );
 }

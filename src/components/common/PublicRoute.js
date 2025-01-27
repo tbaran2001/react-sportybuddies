@@ -8,7 +8,7 @@ export default function PublicRoute({ children }) {
     return null;
   }
   else if (user) {
-    return <Navigate to="/" />
+    return <Navigate to="/ProfilePage" />
   }
   else {
     return children;
