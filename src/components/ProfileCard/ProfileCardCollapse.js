@@ -5,7 +5,7 @@ export default function ProfileCardCollapse({ expanded, description }) {
     return (
         <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-                <Typography sx={{ marginBottom: 2 }}>About me:</Typography>
+                <Typography sx={{ marginBottom: 2 }}>Opis:</Typography>
                 <Typography>{description}</Typography>
             </CardContent>
         </Collapse>

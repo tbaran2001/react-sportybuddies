@@ -38,7 +38,7 @@ export default function BuddiesPage() {
                         gutterBottom
                         sx={{fontWeight: "bold", color: theme.palette.text.primary}}
                     >
-                        My Buddies
+                        Twoi znajomi
                     </Typography>
                     <List>
                         {buddies.map((buddy) => (

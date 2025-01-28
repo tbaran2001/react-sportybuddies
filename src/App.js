@@ -1,7 +1,6 @@
 import Container from "react-bootstrap/Container";
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import ApiProvider from "./contexts/ApiProvider";
-import FlashProvider from "./contexts/FlashProvider";
 import UserProvider from "./contexts/UserProvider";
 import PrivateRoute from "./components/common/PrivateRoute";
 import PublicRoute from "./components/common/PublicRoute";
@@ -18,7 +17,6 @@ export default function App() {
     return (
         <Container fluid className="App" style={{backgroundColor: "#162c46", height: "100vh"}}>
             <BrowserRouter>
-                <FlashProvider>
                     <ApiProvider>
                         <UserProvider>
                             <Navbar/>
@@ -64,7 +62,6 @@ export default function App() {
                             </Routes>
                         </UserProvider>
                     </ApiProvider>
-                </FlashProvider>
             </BrowserRouter>
         </Container>
     );

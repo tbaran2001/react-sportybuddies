@@ -8,7 +8,7 @@ export default function Preferences() {
     return (
         <Box flex={1}>
             <Typography variant="h3" align={"center"}>
-                Edit your preferences
+                Twoje preferencje
             </Typography>
             <PreferencesForm/>
             <SportsForm/>

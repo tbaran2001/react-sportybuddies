@@ -38,7 +38,7 @@ export default function PreferencesForm() {
                 sx={{ marginTop: 2 }}
                 onClick={handleSubmit}
             >
-                Save Preferences
+                Zapisz preferencje
             </Button>
         </Box>
     );

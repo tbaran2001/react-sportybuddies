@@ -29,7 +29,7 @@ const InputBox = ({message, setMessage, onSendMessage}) => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder="Type a message"
+                    placeholder="Napisz wiadomość"
                     variant="outlined"
                     sx={{mr: 1}}
                 />

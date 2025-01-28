@@ -39,7 +39,7 @@ export default function DistanceSlider({maxDistance, onChange}) {
 
     return (
         <Box m={2}>
-            <Typography gutterBottom>Max Distance</Typography>
+            <Typography gutterBottom>Preferowana odległość</Typography>
             <Slider
                 getAriaLabel={() => 'Distance slider'}
                 value={value}

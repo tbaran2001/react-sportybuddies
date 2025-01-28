@@ -15,7 +15,6 @@ import {FaEye, FaEyeSlash, FaUserAlt, FaEnvelope, FaLock, FaCalendarAlt} from "r
 import {Link, useNavigate} from "react-router-dom";
 import {registerUser} from "../../../api/authApi";
 import {useApi} from "../../../contexts/ApiProvider";
-import {useFlash} from "../../../contexts/FlashProvider";
 import {useUser} from "../../../contexts/UserProvider";
 
 const StyledPaper = styled(Paper)(({theme}) => ({
@@ -52,7 +51,6 @@ const SignUp = () => {
     const [genderError, setGenderError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const flash = useFlash();
     const {login} = useUser();
     const navigate = useNavigate();
     const api = useApi();
@@ -90,11 +88,9 @@ const SignUp = () => {
 
         const result = await registerUser(api, email, password, username, dob, gender);
         if (!result.ok) {
-            flash("Registration failed", "danger");
             return;
         }
 
-        flash("You have successfully registered!", "success");
         await login(email, password);
         navigate("/ProfilePage");
 
@@ -105,13 +101,13 @@ const SignUp = () => {
             <Box sx={{mt: 8, mb: 8}}>
                 <StyledPaper>
                     <Typography variant="h4" align="center" gutterBottom>
-                        Register
+                        Rejestracja
                     </Typography>
                     <form onSubmit={handleSubmit}>
                         <Box display="flex" flexDirection="column" alignItems="center">
                             <StyledTextField
                                 fullWidth
-                                label="Username"
+                                label="Nazwa użytkownika"
                                 name="username"
                                 value={formData.username}
                                 onChange={handleChange}
@@ -125,7 +121,7 @@ const SignUp = () => {
                             />
                             <StyledTextField
                                 fullWidth
-                                label="Date of Birth"
+                                label="Data urodzenia"
                                 name="dob"
                                 type="date"
                                 value={formData.dob}
@@ -144,7 +140,7 @@ const SignUp = () => {
                                 }}
                             />
                             <FormControl fullWidth sx={{ marginBottom: "1.5rem" }}>
-                                <InputLabel id="gender-label">Gender</InputLabel>
+                                <InputLabel id="gender-label">Płeć</InputLabel>
                                 <Select
                                     labelId="gender-label"
                                     id="gender"
@@ -181,7 +177,7 @@ const SignUp = () => {
                             />
                             <StyledTextField
                                 fullWidth
-                                label="Password"
+                                label="Hasło"
                                 name="password"
                                 type={showPassword ? "text" : "password"}
                                 value={formData.password}
@@ -206,7 +202,7 @@ const SignUp = () => {
                             />
                             <StyledTextField
                                 fullWidth
-                                label="Confirm Password"
+                                label="Powtórz hasło"
                                 name="confirmPassword"
                                 type={showConfirmPassword ? "text" : "password"}
                                 value={formData.confirmPassword}
@@ -236,10 +232,10 @@ const SignUp = () => {
                                 type="submit"
                                 disabled={loading}
                             >
-                                {loading ? <CircularProgress size={24}/> : "Register"}
+                                {loading ? <CircularProgress size={24}/> : "Zarejestruj się"}
                             </StyledButton>
                             <Button fullWidth component={Link} to="/login">
-                                Already have an account? Login
+                                Masz już konto? Zaloguj się
                             </Button>
                         </Box>
                     </form>

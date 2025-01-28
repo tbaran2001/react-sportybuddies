@@ -42,7 +42,7 @@ export default function AgeRangeSlider({minAge, maxAge, onChange}) {
 
     return (
         <Box m={2}>
-            <Typography gutterBottom>Age range</Typography>
+            <Typography gutterBottom>Preferowany wiek</Typography>
             <Slider
                 getAriaLabel={() => 'Age range slider'}
                 value={value}
@@ -54,7 +54,7 @@ export default function AgeRangeSlider({minAge, maxAge, onChange}) {
             />
             <Box sx={{display: 'flex', justifyContent: 'space-between', mt: 1}}>
                 <TextField
-                    label="Min Age"
+                    label="Min"
                     value={value[0]}
                     onChange={handleInputChange(0)}
                     onBlur={handleBlur}
@@ -63,7 +63,7 @@ export default function AgeRangeSlider({minAge, maxAge, onChange}) {
                     variant="outlined"
                 />
                 <TextField
-                    label="Max Age"
+                    label="Max"
                     value={value[1]}
                     onChange={handleInputChange(1)}
                     onBlur={handleBlur}

@@ -130,14 +130,14 @@ const Navbar = () => {
                                 color="primary"
                                 onClick={handleSignIn}
                             >
-                                Sign In
+                                Zaloguj się
                             </Button>
                             <Button
                                 variant="contained"
                                 color="primary"
                                 onClick={handleSignUp}
                             >
-                                Sign Up
+                                Utwórz konto
                             </Button>
                         </Box>
                     )}
@@ -161,13 +161,13 @@ const Navbar = () => {
                     <ListItemIcon>
                         <FaUser size={20} />
                     </ListItemIcon>
-                    <Typography>Profile</Typography>
+                    <Typography>Profil</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>
                     <ListItemIcon>
                         <FaSignOutAlt size={20} />
                     </ListItemIcon>
-                    <Typography>Logout</Typography>
+                    <Typography>Wyloguj się</Typography>
                 </MenuItem>
             </Menu>
         </Box>

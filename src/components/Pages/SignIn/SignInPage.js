@@ -14,7 +14,6 @@ import {styled} from "@mui/system";
 import {FaEye, FaEyeSlash, FaEnvelope, FaLock} from "react-icons/fa";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useUser} from "../../../contexts/UserProvider";
-import {useFlash} from "../../../contexts/FlashProvider";
 
 const StyledPaper = styled(Paper)(({theme}) => ({
     padding: "2rem",
@@ -40,7 +39,6 @@ export default function SignInPage() {
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const {login} = useUser();
-    const flash = useFlash();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -54,7 +52,6 @@ export default function SignInPage() {
         const {email, password} = formData;
         const result = await login(email, password);
         if (result === 'fail') {
-            flash('Invalid email or password', 'danger');
             return;
         } else if (result === 'ok') {
             let next = '/';
@@ -70,7 +67,7 @@ export default function SignInPage() {
             <Box sx={{mt: 8, mb: 8}}>
                 <StyledPaper>
                     <Typography variant="h4" align="center" gutterBottom>
-                        Login
+                        Logowanie
                     </Typography>
                     <form onSubmit={handleSubmit}>
                         <Box display="flex" flexDirection="column" alignItems="center">
@@ -90,7 +87,7 @@ export default function SignInPage() {
                             />
                             <StyledTextField
                                 fullWidth
-                                label="Password"
+                                label="Hasło"
                                 name="password"
                                 type={showPassword ? "text" : "password"}
                                 value={formData.password}
@@ -120,10 +117,10 @@ export default function SignInPage() {
                                 type="submit"
                                 disabled={loading}
                             >
-                                {loading ? <CircularProgress size={24}/> : "Login"}
+                                {loading ? <CircularProgress size={24}/> : "Zaloguj się"}
                             </StyledButton>
                             <Button fullWidth component={Link} to="/register">
-                                Don't have an account? Register
+                                Nie masz jeszcze konta? Zarejestruj się
                             </Button>
                         </Box>
                     </form>

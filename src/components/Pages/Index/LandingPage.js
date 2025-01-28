@@ -59,23 +59,23 @@ const StyledButton = styled(Button)(({ theme }) => ({
 const features = [
     {
         icon: <FaRunning size={40} />,
-        title: "Sports Matching Algorithm",
-        description: "Find partners matching your skill level and sports preferences"
+        title: "Algorytm dopasowania sportowego",
+        description: "Znajdź partnerów pasujących do Twojego poziomu umiejętności i preferencji sportowych"
     },
     {
         icon: <FaUserFriends size={40} />,
-        title: "Skill Level Filtering",
-        description: "Connect with players at your experience level"
+        title: "Filtrowanie według poziomu umiejętności",
+        description: "Łącz się z graczami na Twoim poziomie doświadczenia"
     },
     {
         icon: <FaMapMarkerAlt size={40} />,
-        title: "Location-Based Connections",
-        description: "Find sports buddies in your area"
+        title: "Lokalizacje w Twojej okolicy",
+        description: "Znajdź sportowych partnerów w pobliżu"
     },
     {
         icon: <FaShieldAlt size={40} />,
-        title: "Safe Meetup Options",
-        description: "Verified profiles and secure meeting points"
+        title: "Bezpieczne spotkania",
+        description: "Zweryfikowane profile i bezpieczne miejsca spotkań"
     }
 ];
 
@@ -83,28 +83,28 @@ const testimonials = [
     {
         image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
         name: "Sarah Johnson",
-        sport: "Tennis",
-        quote: "Found my perfect tennis partner within a week!"
+        sport: "Tenis",
+        quote: "Znalazłam idealnego partnera do tenisa w ciągu tygodnia!"
     },
     {
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
         name: "Michael Chen",
-        sport: "Basketball",
-        quote: "Great community of basketball enthusiasts"
+        sport: "Koszykówka",
+        quote: "Wspaniała społeczność miłośników koszykówki."
     },
     {
         image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
         name: "Emma Wilson",
-        sport: "Running",
-        quote: "Never running alone anymore thanks to this app"
+        sport: "Bieganie",
+        quote: "Nigdy więcej nie biegam sama dzięki tej aplikacji."
     }
 ];
 
 const steps = [
-    "Create your profile",
-    "Set your preferences",
-    "Match with partners",
-    "Start playing!"
+    "Utwórz swój profil",
+    "Ustaw preferencje",
+    "Dopasuj się do partnerów",
+    "Zacznij grać!"
 ];
 
 const LandingPage = () => {
@@ -119,13 +119,13 @@ const LandingPage = () => {
                 <Container>
                     <Box position="relative" color="white" maxWidth={600}>
                         <Typography variant="h2" fontWeight="bold" mb={2}>
-                            Find Your Perfect Sports Buddy
+                            Znajdź idealnego partnera do aktywności sportowych
                         </Typography>
                         <Typography variant="h5" mb={4}>
-                            Connect, Play, Enjoy with Like-Minded Athletes
+                            Łącz się, graj i ciesz się z osobami o podobnych zainteresowaniach
                         </Typography>
                         <StyledButton variant="contained" color="primary" size="large">
-                            Start Matching
+                            Zaczynamy!
                         </StyledButton>
                     </Box>
                 </Container>
@@ -155,7 +155,7 @@ const LandingPage = () => {
 
                 <Box py={8}>
                     <Typography variant="h3" textAlign="center" mb={6}>
-                        How It Works
+                        Jak to działa
                     </Typography>
                     <Stepper activeStep={activeStep} orientation={isMobile ? "vertical" : "horizontal"}>
                         {steps.map((label) => (
@@ -168,7 +168,7 @@ const LandingPage = () => {
 
                 <Box py={8}>
                     <Typography variant="h3" textAlign="center" mb={6}>
-                        Success Stories
+                        Co o nas mówią inni
                     </Typography>
                     <Grid container spacing={4}>
                         {testimonials.map((testimonial, index) => (
@@ -195,66 +195,29 @@ const LandingPage = () => {
                         ))}
                     </Grid>
                 </Box>
-
-                <Box py={8} textAlign="center">
-                    <Typography variant="h3" mb={6}>
-                        Download Now
-                    </Typography>
-                    <Box display="flex" justifyContent="center" gap={2} mb={4}>
-                        <StyledButton
-                            variant="contained"
-                            color="primary"
-                            startIcon={<FaApple />}
-                        >
-                            App Store
-                        </StyledButton>
-                        <StyledButton
-                            variant="contained"
-                            color="primary"
-                            startIcon={<FaAndroid />}
-                        >
-                            Play Store
-                        </StyledButton>
-                    </Box>
-                    <Box maxWidth={400} mx="auto">
-                        <TextField
-                            fullWidth
-                            variant="outlined"
-                            placeholder="Enter your email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            InputProps={{
-                                endAdornment: (
-                                    <Button variant="contained" color="primary">
-                                        Sign Up
-                                    </Button>
-                                )
-                            }}
-                        />
-                    </Box>
-                </Box>
             </Container>
 
             <Box bgcolor="primary.main" color="white" py={4}>
                 <Container>
                     <Grid container spacing={4}>
                         <Grid item xs={12} md={4}>
-                            <Typography variant="h6" gutterBottom>About SportsBuddy</Typography>
-                            <Typography>Connect with sports enthusiasts and find your perfect match for any activity.</Typography>
+                            <Typography variant="h6" gutterBottom>O SportyBuddies</Typography>
+                            <Typography>Łącz się z entuzjastami sportu i znajdź idealne dopasowanie do każdej aktywności.</Typography>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <Typography variant="h6" gutterBottom>Quick Links</Typography>
-                            <Typography>Privacy Policy</Typography>
-                            <Typography>Terms of Service</Typography>
-                            <Typography>Contact Us</Typography>
+                            <Typography variant="h6" gutterBottom>Szybkie linki</Typography>
+                            <Typography>Polityka prywatności</Typography>
+                            <Typography>Warunki korzystania</Typography>
+                            <Typography>Skontaktuj się z nami</Typography>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <Typography variant="h6" gutterBottom>Connect With Us</Typography>
-                            <Typography>Follow us on social media for updates and community highlights.</Typography>
+                            <Typography variant="h6" gutterBottom>Łącz się z nami</Typography>
+                            <Typography>Śledź nas w mediach społecznościowych, aby być na bieżąco z nowościami i wydarzeniami społecznościowymi.</Typography>
                         </Grid>
                     </Grid>
                 </Container>
             </Box>
+
         </Box>
     );
 };
