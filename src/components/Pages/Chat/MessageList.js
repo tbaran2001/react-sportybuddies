@@ -19,7 +19,7 @@ const Message = styled(Paper, {
 })(({ theme, sent }) => ({
     padding: theme.spacing(1, 2),
     maxWidth: "70%",
-    backgroundColor: sent ? theme.palette.primary.light : theme.palette.grey[200],
+    backgroundColor: sent ? theme.palette.primary.light : theme.palette.primary.light[800],
     color: sent ? theme.palette.primary.contrastText : theme.palette.text.primary,
 }));
 

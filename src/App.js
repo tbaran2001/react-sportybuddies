@@ -16,7 +16,7 @@ import LandingPage from "./components/Pages/Index/LandingPage";
 
 export default function App() {
     return (
-        <Container fluid className="App">
+        <Container fluid className="App" style={{backgroundColor: "#162c46", height: "100vh"}}>
             <BrowserRouter>
                 <FlashProvider>
                     <ApiProvider>

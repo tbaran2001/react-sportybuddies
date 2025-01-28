@@ -23,7 +23,8 @@ import {Link, useNavigate} from "react-router-dom";
 import {useApi} from "../../contexts/ApiProvider";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
-    backgroundColor: "#ffffff",
+    backgroundColor: "#162c46",
+    backgroundImage: "none",
     boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
 }));
 
@@ -89,7 +90,7 @@ const Navbar = () => {
                             variant="h6"
                             component={Link}
                             to="/"
-                            sx={{ textDecoration: "none", color: "#333", fontWeight: 600 }}
+                            sx={{ textDecoration: "none", fontWeight: 600 }}
                         >
                             SportyBuddies
                         </Typography>
@@ -99,7 +100,6 @@ const Navbar = () => {
                         <IconContainer>
                             <IconButton
                                 aria-label="Show messages"
-                                sx={{ color: "#333" }}
                             >
                                 <Badge badgeContent={messageCount} color="error">
                                     <FaEnvelope size={24} />
@@ -108,7 +108,6 @@ const Navbar = () => {
 
                             <IconButton
                                 aria-label="Show notifications"
-                                sx={{ color: "#333" }}
                             >
                                 <Badge badgeContent={notificationCount} color="error">
                                     <FaBell size={24} />
@@ -118,7 +117,6 @@ const Navbar = () => {
                             <IconButton
                                 aria-label="Profile settings"
                                 onClick={handleProfileMenuOpen}
-                                sx={{ color: "#333" }}
                             >
                                 <Avatar sx={{ bgcolor: "#1976d2" }}>
                                     <FaUserCircle size={24} />

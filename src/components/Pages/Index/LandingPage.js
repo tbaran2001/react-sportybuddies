@@ -114,7 +114,7 @@ const LandingPage = () => {
     const [email, setEmail] = useState("");
 
     return (
-        <Box>
+        <Box style={{backgroundColor:"#162c46", width:"100%"}}>
             <HeroSection>
                 <Container>
                     <Box position="relative" color="white" maxWidth={600}>
