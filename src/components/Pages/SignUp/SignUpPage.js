@@ -152,8 +152,8 @@ const SignUp = () => {
                                     }}
                                     error={!!genderError}
                                 >
-                                    <MenuItem value={1}>Male</MenuItem>
-                                    <MenuItem value={2}>Female</MenuItem>
+                                    <MenuItem value={1}>Mężczyzna</MenuItem>
+                                    <MenuItem value={2}>Kobieta</MenuItem>
                                 </Select>
                                 {genderError && (
                                     <Typography color="error" variant="caption">

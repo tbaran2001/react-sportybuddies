@@ -9,7 +9,7 @@ import {uploadProfilePhoto} from "../../api/profileApi";
 export default function ProfileCardMedia({profile}) {
     const api = useApi();
     const {user} = useUser();
-    const defaultPhotoUrl = '/logo512.png';
+    const defaultPhotoUrl = '/photo.png';
 
     const handleFileChange = async (event) => {
         const file = event.target.files[0];

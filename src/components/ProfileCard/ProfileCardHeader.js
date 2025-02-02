@@ -40,7 +40,7 @@ export default function ProfileCardHeader({profile, distance}) {
             subheader={
                 <Box>
                     <Typography variant="subtitle1" component="div">
-                        {profile.location.address && <span>{profile.location.address} </span>}
+                        {profile.location?.address && <span>{profile.location.address} </span>}
 
                         {distance !== undefined && user.id !== profile.id && (
                             <span>, {formatDistance(distance)}</span>

@@ -20,7 +20,7 @@ export default function GenderSelect({gender, onChange}) {
         <Box m={2}>
             <Typography>Szukam</Typography>
             <FormControl fullWidth variant="outlined" margin="normal">
-                <InputLabel id="gender-select-label">Gender</InputLabel>
+                <InputLabel id="gender-select-label">Płeć</InputLabel>
                 <Select
                     labelId="gender-select-label"
                     value={value}

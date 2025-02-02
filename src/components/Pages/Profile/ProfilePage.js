@@ -13,7 +13,7 @@ export default function ProfilePage() {
     const api = useApi();
 
     const fetchLocationName = async (latitude, longitude) => {
-        const API_KEY = process.env.GOOGLE_API_KEY;
+        const API_KEY = "AIzaSyCKqAXLOdrixvaSXeF6ispmTCO9wB53le4";
         const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`;
 
         try {
@@ -45,10 +45,7 @@ export default function ProfilePage() {
 
     useEffect(() => {
         const requestUserLocation = async () => {
-            if (user?.location?.latitude && user?.location?.longitude) {
-                console.log("User's location is already set:", user.location);
-                return;
-            }
+
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     async (position) => {

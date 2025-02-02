@@ -52,8 +52,8 @@ const Navbar = () => {
     const navigate = useNavigate();
     const api = useApi();
 
-    const [messageCount] = useState(3);
-    const [notificationCount] = useState(5);
+    const [messageCount] = useState();
+    const [notificationCount] = useState();
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
