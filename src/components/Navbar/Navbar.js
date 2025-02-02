@@ -99,22 +99,6 @@ const Navbar = () => {
                     {api.isAuthenticated() ? (
                         <IconContainer>
                             <IconButton
-                                aria-label="Show messages"
-                            >
-                                <Badge badgeContent={messageCount} color="error">
-                                    <FaEnvelope size={24} />
-                                </Badge>
-                            </IconButton>
-
-                            <IconButton
-                                aria-label="Show notifications"
-                            >
-                                <Badge badgeContent={notificationCount} color="error">
-                                    <FaBell size={24} />
-                                </Badge>
-                            </IconButton>
-
-                            <IconButton
                                 aria-label="Profile settings"
                                 onClick={handleProfileMenuOpen}
                             >
