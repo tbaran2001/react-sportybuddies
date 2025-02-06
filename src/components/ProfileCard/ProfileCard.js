@@ -40,7 +40,6 @@ export default function ProfileCard({profile, profileSports, distance}) {
                 <ProfileCardHeader profile={profile} distance={distance}/>
                 <ProfileCardMedia profile={profile}/>
                 <ProfileCardContent profileSports={profileSports}/>
-                <ProfileCardActions expanded={expanded} onExpandClick={handleExpandClick}/>
                 <ProfileCardCollapse expanded={expanded} description={profile.description}/>
             </Card>
         </StyledPaper>

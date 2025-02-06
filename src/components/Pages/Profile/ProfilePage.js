@@ -13,7 +13,7 @@ export default function ProfilePage() {
     const api = useApi();
 
     const fetchLocationName = async (latitude, longitude) => {
-        const API_KEY = "AIzaSyCKqAXLOdrixvaSXeF6ispmTCO9wB53le4";
+        const API_KEY = "";
         const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`;
 
         try {
