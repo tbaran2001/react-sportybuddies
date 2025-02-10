@@ -31,3 +31,11 @@ export const uploadProfilePhoto = async (api, file) => {
     const response = await api.post("/profiles/upload-profile-photo", formData);
     return handleApiResponse(response);
 }
+
+export const updateProfileDescription = async (api, profile, description) => {
+    const name = profile.name;
+    const gender = profile.gender;
+    const dateOfBirth = profile.dateOfBirth;
+    const response = await api.put("/profiles/me", {name, description, gender, dateOfBirth});
+    return response.ok;
+}

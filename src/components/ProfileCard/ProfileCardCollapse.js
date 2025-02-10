@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
 import {Button, CardContent, Collapse, TextField, Typography} from '@mui/material';
+import {useUser} from "../../contexts/UserProvider";
+import {useApi} from "../../contexts/ApiProvider";
+import {updateProfileDescription} from "../../api/profileApi";
 
-export default function ProfileCardCollapse({ description }) {
+export default function ProfileCardCollapse({profile}) {
     const [isEditing, setIsEditing] = useState(false);
-    const [editedDescription, setEditedDescription] = useState(description);
+    const [editedDescription, setEditedDescription] = useState(profile.description);
     const [loading, setLoading] = useState(false);
+    const {user} = useUser();
+    const api = useApi();
 
     const handleEditClick = () => {
         setIsEditing(true);
@@ -13,15 +18,7 @@ export default function ProfileCardCollapse({ description }) {
     const handleSaveClick = async () => {
         setLoading(true);
         try {
-            const response = await fetch('/api/update-description', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ description: editedDescription }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to update description');
-            }
+            await updateProfileDescription(api, profile, editedDescription);
 
             setIsEditing(false);
         } catch (error) {
@@ -44,15 +41,17 @@ export default function ProfileCardCollapse({ description }) {
             ) : (
                 <Typography>{editedDescription}</Typography>
             )}
-
-            {isEditing ? (
-                <Button onClick={handleSaveClick} disabled={loading} sx={{ color: 'blue',mt: 1 }}>
-                    {loading ? 'Saving...' : 'Save'}
-                </Button>
-            ) : (
-                <Button onClick={handleEditClick} sx={{ mt: 1 }}>
-                    Edit
-                </Button>
+            {user.id === profile.id && (
+                isEditing ? (
+                    <Button variant="contained" onClick={handleSaveClick} disabled={loading}
+                            sx={{bgcolor: '#162c46', mt: 1}}>
+                        {loading ? 'Zapisywanie...' : 'Zapisz opis'}
+                    </Button>
+                ) : (
+                    <Button variant="contained" onClick={handleEditClick} sx={{bgcolor: '#162c46', mt: 1}}>
+                        Edytuj opis
+                    </Button>
+                )
             )}
         </CardContent>
     );
