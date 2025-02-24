@@ -49,7 +49,7 @@ export default function ProfileCardCollapse({profile}) {
                     </Button>
                 ) : (
                     <Button variant="contained" onClick={handleEditClick} sx={{bgcolor: '#162c46', mt: 1}}>
-                        Edytuj opis
+                        Edit Description
                     </Button>
                 )
             )}

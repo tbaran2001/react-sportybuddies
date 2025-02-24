@@ -18,18 +18,18 @@ export default function GenderSelect({gender, onChange}) {
 
     return (
         <Box m={2}>
-            <Typography>Szukam</Typography>
+            <Typography>Looking for</Typography>
             <FormControl fullWidth variant="outlined" margin="normal">
-                <InputLabel id="gender-select-label">Płeć</InputLabel>
+                <InputLabel id="gender-select-label">Gender</InputLabel>
                 <Select
                     labelId="gender-select-label"
                     value={value}
                     onChange={handleChange}
                     label="Gender"
                 >
-                    <MenuItem value={3}>Wszyscy</MenuItem>
-                    <MenuItem value={1}>Mężczyzn</MenuItem>
-                    <MenuItem value={2}>Kobiety</MenuItem>
+                    <MenuItem value={3}>All</MenuItem>
+                    <MenuItem value={1}>Male</MenuItem>
+                    <MenuItem value={2}>Female</MenuItem>
                 </Select>
             </FormControl>
         </Box>

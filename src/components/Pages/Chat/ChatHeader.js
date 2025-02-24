@@ -12,12 +12,12 @@ const ChatHeader = ({participantName,mainPhotoUrl}) => (
         }}
     >
         <img
-            src={mainPhotoUrl} // Dynamic photo URL
-            alt={participantName} // Alt text for accessibility
+            src={mainPhotoUrl}
+            alt={participantName}
             style={{
-                width: 48, // Adjust size as needed
+                width: 48,
                 height: 48,
-                borderRadius: "50%", // Makes the image round like an avatar
+                borderRadius: "50%",
                 objectFit: "cover",
             }}
         />

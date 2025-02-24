@@ -67,7 +67,7 @@ export default function SignInPage() {
             <Box sx={{mt: 8, mb: 8}}>
                 <StyledPaper>
                     <Typography variant="h4" align="center" gutterBottom>
-                        Logowanie
+                        Sign In
                     </Typography>
                     <form onSubmit={handleSubmit}>
                         <Box display="flex" flexDirection="column" alignItems="center">
@@ -87,7 +87,7 @@ export default function SignInPage() {
                             />
                             <StyledTextField
                                 fullWidth
-                                label="Hasło"
+                                label="Password"
                                 name="password"
                                 type={showPassword ? "text" : "password"}
                                 value={formData.password}
@@ -117,10 +117,10 @@ export default function SignInPage() {
                                 type="submit"
                                 disabled={loading}
                             >
-                                {loading ? <CircularProgress size={24}/> : "Zaloguj się"}
+                                {loading ? <CircularProgress size={24}/> : "Sign In"}
                             </StyledButton>
                             <Button fullWidth component={Link} to="/register">
-                                Nie masz jeszcze konta? Zarejestruj się
+                                Don't have an account? Sign Up
                             </Button>
                         </Box>
                     </form>

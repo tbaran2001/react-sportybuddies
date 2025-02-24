@@ -42,7 +42,7 @@ export default function AgeRangeSlider({minAge, maxAge, onChange}) {
 
     return (
         <Box m={2}>
-            <Typography gutterBottom>Preferowany wiek</Typography>
+            <Typography gutterBottom>Preferred age</Typography>
             <Slider
                 getAriaLabel={() => 'Age range slider'}
                 value={value}

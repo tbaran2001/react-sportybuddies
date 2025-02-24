@@ -101,13 +101,13 @@ const SignUp = () => {
             <Box sx={{mt: 8, mb: 8}}>
                 <StyledPaper>
                     <Typography variant="h4" align="center" gutterBottom>
-                        Rejestracja
+                        Sign Up
                     </Typography>
                     <form onSubmit={handleSubmit}>
                         <Box display="flex" flexDirection="column" alignItems="center">
                             <StyledTextField
                                 fullWidth
-                                label="Nazwa użytkownika"
+                                label="Username"
                                 name="username"
                                 value={formData.username}
                                 onChange={handleChange}
@@ -121,7 +121,7 @@ const SignUp = () => {
                             />
                             <StyledTextField
                                 fullWidth
-                                label="Data urodzenia"
+                                label="Date of birth"
                                 name="dob"
                                 type="date"
                                 value={formData.dob}
@@ -140,7 +140,7 @@ const SignUp = () => {
                                 }}
                             />
                             <FormControl fullWidth sx={{ marginBottom: "1.5rem" }}>
-                                <InputLabel id="gender-label">Płeć</InputLabel>
+                                <InputLabel id="gender-label">Gender</InputLabel>
                                 <Select
                                     labelId="gender-label"
                                     id="gender"
@@ -152,8 +152,8 @@ const SignUp = () => {
                                     }}
                                     error={!!genderError}
                                 >
-                                    <MenuItem value={1}>Mężczyzna</MenuItem>
-                                    <MenuItem value={2}>Kobieta</MenuItem>
+                                    <MenuItem value={1}>Male</MenuItem>
+                                    <MenuItem value={2}>Female</MenuItem>
                                 </Select>
                                 {genderError && (
                                     <Typography color="error" variant="caption">
@@ -177,7 +177,7 @@ const SignUp = () => {
                             />
                             <StyledTextField
                                 fullWidth
-                                label="Hasło"
+                                label="Password"
                                 name="password"
                                 type={showPassword ? "text" : "password"}
                                 value={formData.password}
@@ -202,7 +202,7 @@ const SignUp = () => {
                             />
                             <StyledTextField
                                 fullWidth
-                                label="Powtórz hasło"
+                                label="Confirm Password"
                                 name="confirmPassword"
                                 type={showConfirmPassword ? "text" : "password"}
                                 value={formData.confirmPassword}
@@ -232,10 +232,10 @@ const SignUp = () => {
                                 type="submit"
                                 disabled={loading}
                             >
-                                {loading ? <CircularProgress size={24}/> : "Zarejestruj się"}
+                                {loading ? <CircularProgress size={24}/> : "Sign Up"}
                             </StyledButton>
                             <Button fullWidth component={Link} to="/login">
-                                Masz już konto? Zaloguj się
+                                Already have an account? Sign In
                             </Button>
                         </Box>
                     </form>

@@ -28,9 +28,9 @@ const Message = styled(Paper, {
 const MessageList = ({messages, userId, endRef}) => {
     const formatDate = (dateString) => {
         try {
-            return format(new Date(dateString), "d MMMM yyyy, HH:mm", {locale: pl});
+            return format(new Date(dateString), "d MMMM yyyy, HH:mm");
         } catch (error) {
-            console.error("Błąd formatowania daty:", error);
+            console.error(error);
             return dateString;
         }
     };

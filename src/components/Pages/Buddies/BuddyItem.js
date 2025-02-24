@@ -67,7 +67,7 @@ export const BuddyItem = memo(({buddy}) => {
                 }}
             >
                 <img
-                    src={buddy.matchedProfile.mainPhotoUrl} // Path to the photo
+                    src={buddy.matchedProfile.mainPhotoUrl}
                     alt={buddy.matchedProfile.name}
                     style={{width: 60, height: 60, borderRadius: theme.spacing(1), objectFit: "cover"}}
                 />

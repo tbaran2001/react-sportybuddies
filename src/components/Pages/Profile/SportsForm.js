@@ -7,7 +7,7 @@ export default function SportsForm() {
     return (
         <Box sx={{padding: 3, margin: 'auto'}}>
             <Typography variant="h3" align={"center"}>
-                Wybierz swoje aktywności sportowe
+                Choose your sport activities
             </Typography>
             <SportsPicker/>
         </Box>

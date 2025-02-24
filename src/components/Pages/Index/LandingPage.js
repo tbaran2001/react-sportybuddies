@@ -58,31 +58,31 @@ const StyledButton = styled(Button)(({ theme }) => ({
 const features = [
     {
         icon: <FaRunning size={40} />,
-        title: "Aktywności sportowe",
-        description: "Wybierz ulubione aktywności sportowe"
+        title: "Sports Matching Algorithm",
+        description: "Find partners matching your skill level and sports preferences"
     },
     {
         icon: <FaUserFriends size={40} />,
-        title: "Filtrowanie preferencji",
-        description: "Łącz się z tymi, którzy ci pasują"
+        title: "Skill Level Filtering",
+        description: "Connect with players at your experience level"
     },
     {
         icon: <FaMapMarkerAlt size={40} />,
-        title: "Lokalizacja",
-        description: "Znajdź sportowych partnerów w twojej okolicy"
+        title: "Location-Based Connections",
+        description: "Find sports buddies in your area"
     },
     {
         icon: <FaRocketchat size={40} />,
-        title: "Czatuj",
-        description: "Czatuj i umawiaj się z dopasowanymi osobami"
+        title: "Chat!",
+        description: "Chat and meet your matches"
     }
 ];
 
 const steps = [
-    "Utwórz swój profil",
-    "Ustaw preferencje",
-    "Wybierz partnera",
-    "Zaczynamy!"
+    "Create your profile",
+    "Set your preferences",
+    "Match with partners",
+    "Start playing!"
 ];
 
 const LandingPage = () => {
@@ -97,13 +97,13 @@ const LandingPage = () => {
                 <Container>
                     <Box position="relative" color="white" maxWidth={600}>
                         <Typography variant="h2" fontWeight="bold" mb={2}>
-                            Znajdź idealnego partnera do aktywności sportowych
+                            Find Your Perfect Sports Buddy
                         </Typography>
                         <Typography variant="h5" mb={4}>
-                            Łącz się, graj i ciesz się z osobami o podobnych zainteresowaniach
+                            Connect, Play, Enjoy with Like-Minded Athletes
                         </Typography>
                         <StyledButton variant="contained" color="primary" size="large">
-                            Zaczynamy!
+                            Start Matching
                         </StyledButton>
                     </Box>
                 </Container>
@@ -112,7 +112,7 @@ const LandingPage = () => {
             <Container>
                 <Box py={8}>
                     <Typography variant="h3" textAlign="center" mb={6}>
-                        Dlaczego SportyBuddies
+                        Why SportyBuddies
                     </Typography>
                     <Grid container spacing={4}>
                         {features.map((feature, index) => (
@@ -133,7 +133,7 @@ const LandingPage = () => {
 
                 <Box py={8}>
                     <Typography variant="h3" textAlign="center" mb={6}>
-                        Jak to działa
+                        How It Works
                     </Typography>
                     <Stepper activeStep={activeStep} orientation={isMobile ? "vertical" : "horizontal"}>
                         {steps.map((label) => (
